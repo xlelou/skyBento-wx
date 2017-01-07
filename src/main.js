@@ -10,7 +10,6 @@ Vue.use(vuex);
 Vue.use(vueResource);
 Vue.use(vueRouter);
 
-
 const router = new vueRouter({
     mode: "history",
     routes
