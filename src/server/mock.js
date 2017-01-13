@@ -22,7 +22,7 @@ Mock.mock(
                     "id": 5
                 },
                 {
-                    "name":'空挡精选',
+                    "name":'精选',
                     "id": 6
                 }
             ]
@@ -48,9 +48,10 @@ Mock.mock(
             {
                 "img":Random.image('360x640', '#894FC4', 'Hello'),
                 "name":'台铁猪扒饭',
-                "isShow": true,
+                "isNew": true,
+                "price": 12.50,
                 id: 1,
-                "desc": Random.paragraph()
+                "desc": "新鲜放心的原料来源，严选高档原料肉，可追踪来源"
             }
         ]
     }

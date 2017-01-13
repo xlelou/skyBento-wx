@@ -1,14 +1,16 @@
 <template>
     <div>
-       <com-footer @submit="submitOrder" @showCart="showCart">
+       <product :product="dishesData"></product>
+       <com-menu @toggle="toggleFunc" ref="menu" @load="loadFunc"></com-menu>
+        <com-footer @submit="submitOrder" @showCart="showCart">
            <p slot="submit-order-slot">提交订单</p>
        </com-footer>
-       <com-menu @toggle="toggleFunc" ref="menu" @load="loadFunc"></com-menu>
     </div>
 </template>
 <script>
     import comFooter from '../components/comFooter'
     import comMenu from '../components/comMenu'
+    import product from '../components/product'
     export default {
         data() {
             return {
@@ -40,7 +42,8 @@
         },
         components: {
             comFooter,
-            comMenu
+            comMenu,
+            product
         },
         watch: {
             dishesData: function (val, oldVal) {
