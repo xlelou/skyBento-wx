@@ -1,10 +1,10 @@
 <template>
     <div>
-       <product :product="dishesData"></product>
-       <com-menu @toggle="toggleFunc" ref="menu" @load="loadFunc"></com-menu>
+        <product :product="dishesData"></product>
+        <com-menu @toggle="toggleFunc" ref="menu" @load="loadFunc"></com-menu>
         <com-footer @submit="submitOrder" @showCart="showCart">
            <p slot="submit-order-slot">提交订单</p>
-       </com-footer>
+        </com-footer>
     </div>
 </template>
 <script>
@@ -34,6 +34,7 @@
             },
             toggleFunc(id){
                this.$http({method: "GET", params: {id: id}, url: "/index/getDishesData"}).then(res=>{
+                   console.log("success");
                    this.dishesData = (JSON.parse(res.data)).data[0];
                }).catch(function(){
                    alert("请求出错，请联系管理员")
@@ -44,11 +45,6 @@
             comFooter,
             comMenu,
             product
-        },
-        watch: {
-            dishesData: function (val, oldVal) {
-                console.log( val, oldVal)
-            },
         }
     }
 </script>

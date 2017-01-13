@@ -46,7 +46,7 @@ Mock.mock(
     /\/index\/getDishesData\?id=*/, {
         "data": [
             {
-                "img":Random.image('360x640', '#894FC4', 'Hello'),
+                "img":"http://www.3158.cn/data/i10/20160115/19493403564265791.jpg",
                 "name":'台铁猪扒饭',
                 "isNew": true,
                 "price": 12.50,

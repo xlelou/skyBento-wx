@@ -1,5 +1,6 @@
 <template>
-    <div class="product-item" :style="">
+    <div class="product-container" :style="{backgroundImage: 'url('+ product.img +')', backgroundRepeat: 'no-repeat', backgroundPosition: 'fixed top',  backgroundSize: '100% 100%'}">
+    <div class="product-item" >
         <p class="product-id hidden">{{product.id}}</p>
         <div class="product-name">
             <h5>{{product.name}}</h5>
@@ -12,6 +13,7 @@
             </li>
         </ul>
         <img class="new-type" v-if="product.isNew" src="../assets/new-type.png">
+    </div>
     </div>
 </template>
 <script>
@@ -41,6 +43,11 @@
     }
 </script>
 <style>
+    .product-container {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
     .product-item {
         position: absolute;
         top: 30%;
