@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="footer">
-            <div id="check-in-cart" class="cart" @click="showCartFunc"><span class="total" :class="{hidden: total}">{{total}}</span></div>
+            <div id="check-in-cart" class="cart" @click="showCartFunc"><span class="total" :class="{hidden: total >= 1 ? false : true}">{{total}}</span></div>
             <div class="submit" id="submit-order" @click="submitFunc">
                 <slot name="submit-order-slot">
                     下单
@@ -75,5 +75,8 @@
     right: -.3rem;
     top: -.3rem;
     color: #fff;
+}
+.total.hidden {
+    display: none
 }
 </style>

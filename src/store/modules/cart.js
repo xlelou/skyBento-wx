@@ -10,6 +10,9 @@ const actions = {
     },
     checkOutCart: function({commit}, id){
         commit(type.CHECK_OUT_CART, id)
+    },
+    clearCart: function({commit}){
+        commit(type.CLEAR_CART);
     }
 }
 
@@ -40,18 +43,21 @@ const mutations = {
             });
         }
     },
-    [type.CHECK_OUT_CART]({products}, id){
-        var record = products.find(function(item, index, array){
-           return item.id === product.id;
+    [type.CHECK_OUT_CART](state, id){
+        var record = state.products.find(function(item, index, array){
+           return item.id === id;
         });
 
         if (record.number > 1) {
             record.number--;
         } else {
-            products = products.filter((item)=>{
+            state.products = state.products.filter((item)=>{
                 return item.id !== id;
             });
         }
+    },
+    [type.CLEAR_CART](state) {
+        state.products = [];
     }
 }
 
