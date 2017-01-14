@@ -1,6 +1,6 @@
 {
   "name": "skybento-wx",
-  "description": "A Vue.js project",
+  "description": "一个基于Vue.js开发的外卖预订",
   "version": "1.0.0",
   "author": "日月为易 <zhang940823@icloud.com>",
   "private": true,
