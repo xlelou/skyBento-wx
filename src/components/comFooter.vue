@@ -27,6 +27,7 @@
                 this.$emit('showCart');
             },
             submitFunc() {
+                
                 this.$emit('submit');
             },
         }
