@@ -1,6 +1,6 @@
 <template>
     <div v-show="show">
-        <div class="weui-mask" id="iosMask" @click="showActionSheet" style="opacity: 1;"></div>
+        <div class="weui-mask" id="iosMask" @click="hide" style="opacity: 1;"></div>
         <div class="weui-actionsheet weui-actionsheet_toggle" id="iosActionsheet">
             <div class="weui-actionsheet__menu">
                 <div class="weui-actionsheet__cell s-list-item weui-actionsheet-title">
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="weui-actionsheet__action" style="visibility: hidden">
-                <div class="weui-actionsheet__cell" id="iosActionsheetCancel" @click="showActionSheet">取消</div>
+                <div class="weui-actionsheet__cell" id="iosActionsheetCancel" @click="hide">取消</div>
             </div>
     </div>
 </div>
@@ -45,8 +45,8 @@
             }
         },
         methods: {
-            showActionSheet() {
-                this.show = !this.show;
+            hide() {
+                this.$emit("hide");
             },
             checkInCart(e){
                 this.$store.dispatch('checkInCart', e);

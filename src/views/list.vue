@@ -7,7 +7,7 @@
         <com-footer @submit="submitOrder" @showCart="show = true">
            <p slot="submit-order-slot">提交订单</p>
         </com-footer>
-        <action-sheet :show="show" :dataSource="dataSource"></action-sheet>
+        <action-sheet :show="show" :dataSource="dataSource" @hide="show = false"></action-sheet>
     </div>
 </template>
 <script>
