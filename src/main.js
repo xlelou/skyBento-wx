@@ -4,6 +4,7 @@ import routes from './router/route'
 import vueResource from 'vue-resource'
 import vuex from 'vuex'
 import vueRouter from 'vue-router'
+import store from './store/store'
 import mock from './server/mock'
 
 Vue.use(vuex);
@@ -18,5 +19,6 @@ const router = new vueRouter({
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

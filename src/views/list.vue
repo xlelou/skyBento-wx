@@ -2,21 +2,29 @@
     <div>
         <product :product="dishesData"></product>
         <com-menu @toggle="toggleFunc" ref="menu" @load="loadFunc"></com-menu>
-        <com-footer @submit="submitOrder" @showCart="showCart">
+        <com-footer @submit="submitOrder" @showCart="show = true">
            <p slot="submit-order-slot">提交订单</p>
         </com-footer>
+        <action-sheet :show="show" :dataSource="dataSource"></action-sheet>
     </div>
 </template>
 <script>
     import comFooter from '../components/comFooter'
     import comMenu from '../components/comMenu'
     import product from '../components/product'
+    import actionSheet from '../components/actionSheet'
     export default {
         data() {
             return {
                  dishesData: {
 
-                 }
+                 },
+                 show: false,
+            }
+        },
+        computed: {
+            dataSource(){
+               return this.$store.getters.getProducts
             }
         },
         mounted(){
@@ -28,9 +36,6 @@
             },
             submitOrder(){
                 alert("submit order");
-            },
-            showCart(){
-                alert("show cart");
             },
             toggleFunc(id){
                this.$http({method: "GET", params: {id: id}, url: "/index/getDishesData"}).then(res=>{
@@ -44,7 +49,8 @@
         components: {
             comFooter,
             comMenu,
-            product
+            product,
+            actionSheet
         }
     }
 </script>

@@ -37,7 +37,7 @@
                     this.active = false;
                 }, 400);
 
-                alert("checkInCart");
+                this.$store.dispatch('checkInCart', this.product);
             }
         }
     }
