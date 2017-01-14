@@ -1,10 +1,10 @@
 <template>
-    <div class="product-container" :style="{backgroundImage: 'url('+ product.img +')', backgroundRepeat: 'no-repeat', backgroundPosition: 'fixed top',  backgroundSize: '100% 100%'}">
+    <div class="product-container" @click="gotoDetail" :style="{backgroundImage: 'url('+ product.img +')', backgroundRepeat: 'no-repeat', backgroundPosition: 'fixed top',  backgroundSize: '100% 100%'}">
         <div class="product-item" >
             <p class="product-id hidden">{{product.id}}</p>
             <div class="product-name">
                 <h5>{{product.name}}</h5>
-                <span class="add-to-cart" @click="checkInCart" :class="{active: active}"></span>
+                <span class="add-to-cart" @click.stop="checkInCart" :class="{active: active}"></span>
             </div>
             <p class="product-price"><span>{{product.price}}</span>元/份</p>
             <ul class="product-desc">
@@ -38,6 +38,11 @@
                 }, 400);
 
                 this.$store.dispatch('checkInCart', this.product);
+            },
+            gotoDetail(){
+                  this.$router.push({
+                    path: `/detail/${this.product.id}`
+                  });
             }
         }
     }

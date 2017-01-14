@@ -47,12 +47,16 @@
             //加载商品
             loadFunc(){
                 const menu = this.$refs.menu;
-                this.toggleFunc(menu.$el.querySelector(".active").getAttribute("data-id"), this.pageIndex);
+                this.toggleFunc(menu.$el.querySelector(".active").getAttribute("data-id"));
             },
             submitOrder(){
                 alert("submit order");
             },
-            toggleFunc(id, pageIndex){
+            toggleFunc(id, pageIndex = 1){
+               if (pageIndex == 1) {
+                   this.pageIndex = 1;
+               }
+               console.log(pageIndex, this.pageIndex);
                this.$http({method: "GET", params: {id: id, pageIndex: pageIndex}, url: "/index/getDishesData"}).then(res=>{
                    var data = (JSON.parse(res.data)).data[0];
                    
