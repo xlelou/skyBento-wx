@@ -1,19 +1,19 @@
 <template>
     <div class="product-container" :style="{backgroundImage: 'url('+ product.img +')', backgroundRepeat: 'no-repeat', backgroundPosition: 'fixed top',  backgroundSize: '100% 100%'}">
-    <div class="product-item" >
-        <p class="product-id hidden">{{product.id}}</p>
-        <div class="product-name">
-            <h5>{{product.name}}</h5>
-            <span class="add-to-cart" @click="checkInCart" :class="{active: active}"></span>
+        <div class="product-item" >
+            <p class="product-id hidden">{{product.id}}</p>
+            <div class="product-name">
+                <h5>{{product.name}}</h5>
+                <span class="add-to-cart" @click="checkInCart" :class="{active: active}"></span>
+            </div>
+            <p class="product-price"><span>{{product.price}}</span>元/份</p>
+            <ul class="product-desc">
+                <li>
+                    {{product.desc}}
+                </li>
+            </ul>
+            <img class="new-type" v-if="product.isNew" src="../assets/new-type.png">
         </div>
-        <p class="product-price"><span>{{product.price}}</span>元/份</p>
-        <ul class="product-desc">
-            <li>
-                {{product.desc}}
-            </li>
-        </ul>
-        <img class="new-type" v-if="product.isNew" src="../assets/new-type.png">
-    </div>
     </div>
 </template>
 <script>
