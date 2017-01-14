@@ -7,6 +7,7 @@
 </template>
 
 <script>
+  import weui from './lib/weui.css'
   export default {
     name: 'app',
     data() {
