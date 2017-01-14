@@ -63,6 +63,13 @@
     }
 </script>
 <style>
+    .icon-delete {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: url(../assets/icon-delete.png);
+        background-size: 100% 100%;
+    }
         .weui-actionsheet-title {
             padding: 5px;
             color: #fff;
