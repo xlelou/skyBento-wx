@@ -1,6 +1,6 @@
 <template>
     <div class="product-container" @click="gotoDetail" :style="{backgroundImage: 'url('+ product.img +')', backgroundRepeat: 'no-repeat', backgroundPosition: 'fixed top',  backgroundSize: '100% 100%'}">
-        <div class="product-item" >
+        <div class="product-item">
             <p class="product-id hidden">{{product.id}}</p>
             <div class="product-name">
                 <h5>{{product.name}}</h5>
@@ -30,24 +30,24 @@
             }
         },
         methods: {
-            checkInCart(){
+            checkInCart() {
                 this.active = true;
 
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.active = false;
                 }, 400);
 
                 this.$store.dispatch('checkInCart', this.product);
             },
-            gotoDetail(){
-                  this.$router.push({
+            gotoDetail() {
+                this.$router.push({
                     path: `/detail/${this.product.id}`
-                  });
+                });
             }
         }
     }
 </script>
-<style>
+<style scoped>
     .product-container {
         width: 100%;
         height: 100%;

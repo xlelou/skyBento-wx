@@ -60,7 +60,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
     .weui-actionsheet__cell:hover,
     .weui-actionsheet__cell:link,
     .weui-actionsheet__cell:active,

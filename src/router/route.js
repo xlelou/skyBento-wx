@@ -16,6 +16,7 @@ const routes = [
     {
         path: "/payOrder",
         component: payOrder,
+        name: "payOrder"
     },
     {
         path: "*",

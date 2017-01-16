@@ -80,7 +80,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
      .prev,
      .next {
          display: inline-block;
