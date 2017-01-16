@@ -1,26 +1,21 @@
-import list from '../views/list'
-import detail from '../views/detail'
-import notFoundPage from '../views/notFoundPage'
-import payOrder from '../views/payOrder'
-
 const routes = [
     {
         path: "/list",
-        component: list,
+        component: require('../views/list'),
         name: 'list'
     },
     {
         path: "/detail/:id",
-        component: detail,
+        component: require('../views/detail'),
     },
     {
         path: "/payOrder",
-        component: payOrder,
+        component: require('../views/payOrder'),
         name: "payOrder"
     },
     {
         path: "*",
-        component: notFoundPage
+        component: require('../views/notFoundPage')
     }
 ]
 export default routes
