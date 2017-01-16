@@ -61,7 +61,9 @@
         },
         methods: {
              submitOrder(){
-                alert("submit order");
+                 this.$router.push({
+                    path: "/payOrder"
+                  });
             },
             checkInCart(){
                 this.active = true;

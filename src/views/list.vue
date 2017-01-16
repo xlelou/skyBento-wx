@@ -50,7 +50,9 @@
                 this.toggleFunc(menu.$el.querySelector(".active").getAttribute("data-id"));
             },
             submitOrder(){
-                alert("submit order");
+                 this.$router.push({
+                    path: "/payOrder"
+                  });
             },
             toggleFunc(id, pageIndex = 1){
                if (pageIndex == 1) {

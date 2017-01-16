@@ -1,6 +1,7 @@
 import list from '../views/list'
 import detail from '../views/detail'
 import notFoundPage from '../views/notFoundPage'
+import payOrder from '../views/payOrder'
 
 const routes = [
     {
@@ -11,6 +12,10 @@ const routes = [
     {
         path: "/detail/:id",
         component: detail,
+    },
+    {
+        path: "/payOrder",
+        component: payOrder,
     },
     {
         path: "*",

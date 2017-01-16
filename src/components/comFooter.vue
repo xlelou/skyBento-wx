@@ -33,7 +33,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 .footer {
 	position: fixed;
 	left: 0;
@@ -54,6 +54,14 @@
 	background: url(../assets/cart.png);
 	background-size: 100% 100%;
     position: relative
+}
+.cart::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    background: #ff8400;
+    right: -1rem
 }
 .footer .submit {
 	width: 80%;
