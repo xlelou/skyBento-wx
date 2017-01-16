@@ -43,14 +43,25 @@ Mock.mock(
         "data": {
             "list": [
                 {
-                    avatar: "",
+                    avatar: "http://tva4.sinaimg.cn/crop.0.66.348.348.180/4d08297djw1ea20skfmaij209q0dhjsc.jpg",
                     userName: "张三",
                     comment: "好吃，美味",
                     star: 4,
                     commentImg: [
                         "http://kd.cache.timepack.cn/o_1b2an5ouc1voros221q1q1f116d9.jpg",
-                        ""
-                    ]
+                        "http://kd.cache.timepack.cn/o_1b2an5oucrf51kpdf2f136p1urcb.jpg"
+                    ],
+                    createTime: new Date()
+                },
+                {
+                    avatar: "http://tva4.sinaimg.cn/crop.0.66.348.348.180/4d08297djw1ea20skfmaij209q0dhjsc.jpg",
+                    userName: "李四",
+                    comment: "美味不用等。哈哈",
+                    star: 2,
+                    commentImg: [
+                        
+                    ],
+                    createTime: new Date()
                 }
             ]
         }
