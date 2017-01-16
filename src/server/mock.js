@@ -33,13 +33,26 @@ Mock.mock(
         "data": {
             "name|1-5": '@name',
             "price|1-100.1-2":1,
-            "goodsImg|2-5":[Random.image('400x150', '#894FC4', 'Hello')],
+            "goodsImg":[
+                "http://img.redocn.com/sheji/20160225/aecantingcaishijieshaotuijieguanggaoshipinmoban_5908760.jpg"
+            ],
         }
     }
 ).mock(
-    /\/desc\?*/, {
+    /\/comment\?*/, {
         "data": {
-            "desc": Random.paragraph()
+            "list": [
+                {
+                    avatar: "",
+                    userName: "张三",
+                    comment: "好吃，美味",
+                    star: 4,
+                    commentImg: [
+                        "http://kd.cache.timepack.cn/o_1b2an5ouc1voros221q1q1f116d9.jpg",
+                        ""
+                    ]
+                }
+            ]
         }
     }
 ).mock(
@@ -56,14 +69,6 @@ Mock.mock(
             }
         ]
     }
-).mock("/get/cart", {
-    "data": {
-        "goodsId|+1":1,
-        "name|1-3":'@name',
-        "specifications":["大份","中份","小份"],
-        "img":Random.image('50x50', '#894FC4', 'Hello'),
-        "price|1-100.1-2": 1
-    }
-});
+);
 
 export default Mock

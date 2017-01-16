@@ -103,6 +103,7 @@
         width: 100%;
         bottom: 0;
         color: #fff;
+        box-sizing: border-box;
         padding: .5rem 1rem;
     }
     .header > div h5 {
