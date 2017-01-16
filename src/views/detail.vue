@@ -19,8 +19,8 @@
                 评价
             </li>
         </ul>
-        <product-detail :id="id" v-show="isProductDetail === 'detail' ? true : false "></product-detail>
-        <comment :id="id" v-show="isProductDetail === 'comment' ? true : false "></comment>
+        <product-detail :id="id" v-if="isProductDetail === 'detail' ? true : false "></product-detail>
+        <comment :id="id" v-if="isProductDetail === 'comment' ? true : false "></comment>
         <com-footer @submit="submitOrder" @showCart="show = true">
            <p slot="submit-order-slot">提交订单</p>
         </com-footer>
