@@ -11,6 +11,16 @@
                 <span class="icon add-to-cart" @click="checkInCart" :class="{active: active}"></span>
             </div>
         </div>
+        <ul class="tab">
+            <li :class="{active: isProductDetail === 'detail' ? true : false}" @click="isProductDetail = 'detail'">
+                详情
+            </li>
+            <li :class="{active: isProductDetail === 'comment' ? true : false}" @click="isProductDetail = 'comment'">
+                评价
+            </li>
+        </ul>
+        <product-detail :id="id" v-show="isProductDetail === 'detail' ? true : false "></product-detail>
+        <comment :id="id" v-show="isProductDetail === 'comment' ? true : false "></comment>
         <com-footer @submit="submitOrder" @showCart="show = true">
            <p slot="submit-order-slot">提交订单</p>
         </com-footer>
@@ -20,6 +30,9 @@
 <script>
     import comFooter from '../components/comFooter'
     import actionSheet from '../components/actionSheet'
+    import productDetail from '../components/detail'
+    import comment from '../components/comment'
+
     export default {
         data(){
             return {
@@ -27,7 +40,9 @@
 
                 },
                 show: false,
-                active: false
+                active: false,
+                isProductDetail: "detail",
+                id: this.$route.params.id
             }
         },
          computed: {
@@ -57,10 +72,15 @@
 
                 this.$store.dispatch('checkInCart', this.product);
             },
+            toggleMenu(){
+
+            }
         },
         components: {
             comFooter,
-            actionSheet
+            actionSheet,
+            productDetail,
+            comment
         }
     }
 </script>
@@ -104,5 +124,21 @@
     .add-to-cart.active {
         background: url(../assets/icon-cart-active.png) no-repeat;
         background-size: 100%
+    }
+    .tab {
+        display: flex;
+        list-style-type: none;
+        background: #ff8400;
+        padding: .5rem 1rem;
+    }
+    .tab li {
+        width: 50%;
+        text-align: center
+    }
+    .tab li:first-child {
+          border-right: 1px solid #fff
+    }
+    .tab li.active {
+        color: #fff;
     }
 </style>
