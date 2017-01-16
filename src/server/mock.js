@@ -50,7 +50,8 @@ Mock.mock(
                 "name":'台铁猪扒饭',
                 "isNew": true,
                 "price": 12.50,
-                id: 1,
+                "id": 1,
+                "inventory": 33,
                 "desc": "新鲜放心的原料来源，严选高档原料肉，可追踪来源"
             }
         ]
