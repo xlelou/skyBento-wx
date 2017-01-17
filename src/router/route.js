@@ -12,6 +12,16 @@ const routes = [
         path: "/payOrder",
         component: require('../views/payOrder'),
         name: "payOrder"
+    }, 
+    {
+        path: "/address",
+        component: require('../views/address'),
+        name: "address"
+    },
+     {
+        path: "/userInfo",
+        component: require('../views/userInfo'),
+        name: "userInfo"
     },
     {
         path: "*",

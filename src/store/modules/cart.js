@@ -24,6 +24,11 @@ const getters = {
         return products.reduce(function(num, item){
             return num += item.number;
         }, 0)
+    },
+    getProductTotalPrice: ({products}) => {
+        return products.reduce(function(sum, item){
+            return sum += (item.number * item.price);
+        }, 0)
     }
 }
 
