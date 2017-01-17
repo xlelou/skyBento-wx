@@ -20,7 +20,7 @@ const routes = [
     },
      {
         path: "/userInfo",
-        component: require('../views/userInfo'),
+        component: require('../views/editUserInfo'),
         name: "userInfo"
     },
     {
