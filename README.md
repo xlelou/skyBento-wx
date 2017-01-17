@@ -1,6 +1,6 @@
 # skybento-wx
 
-> A Vue.js project
+> 一个基于vue开发的外卖订餐页面
 
 ## Build Setup
 
