@@ -86,7 +86,7 @@ Mock.mock(
             "name": "张三",
             "tel": 15388888888,
             "userId": "123",
-            "poenId": "123asfsdaf"
+            "poenId": "1234"
         }
     }
 );

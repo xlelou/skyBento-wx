@@ -1,28 +1,34 @@
 <template>
     <div class="page-edit-user-info">
-        <p></p>
-        <div>
-            <label for="name">取餐人</label>
-            <input type="text" v-model="userInfo.username" id="name" placeholder="请输入取餐人">
-        </div>
-        <div>
-            <label for="">联系电话</label>
-            <input type="text" v-model="userInfo.mobile" placeholder="请输入联系电话">
-        </div>
-        <div class="hidden">
-            <label for="">用户id</label>
-            <input type="text" v-model="userInfo.userid">
-        </div>
-        <div class="hidden">
-            <label for="">open id</label>
-            <input type="text" v-model="userInfo.openid">
-        </div>
-        <div>
+        <p>订餐人信息</p>
+        <com-cell :border="true" title="姓名">
+            <div slot="body">
+                <input type="text" name="name" id="name" v-model="userInfo.username">
+            </div>
+        </com-cell>
+         <com-cell :border="true" title="联系电话">
+            <div slot="body">
+                <input type="text" name="tel" id="tel" v-model="userInfo.mobile">
+            </div>
+        </com-cell>
+
+        <com-cell :border="true" title="用户id" class="hidden">
+            <div slot="body">
+                <input type="text" name="userid" id="userid" v-model="userInfo.userid">
+            </div>
+        </com-cell>
+        <com-cell :border="true" title="openid" class="hidden">
+            <div slot="body">
+                <input type="text" name="openid" id="openid" v-model="userInfo.openid">
+            </div>
+        </com-cell>
+        <div style="display: flex; justify-content: center">
             <button type="button" @click="sumbit">保存</button>
         </div>
     </div>
 </template>
 <script>
+    import comCell from '../components/comCell'
     export default {
         data(){
             return {
@@ -53,6 +59,9 @@
                     //error
                 });
             }
+        },
+        components: {
+            comCell
         }
     }
 </script>
@@ -61,26 +70,15 @@
         min-height: 100vh;
         background: #1a1b1f;
         padding: 1rem;
-        box-sizing: border-box
-    }
-    div.page-edit-user-info div {
-        padding: .5rem 0;
-        display: flex;
-        justify-content: center
-    }
-    label {
+        box-sizing: border-box;
         color: #fff;
-        width: 100px;
-        display: flex;
-        align-items: flex-end
     }
+   
     input {
-        width: calc(100% - 100px);
         border: none;
         color: #fff;
         background: transparent;
         outline: none;
-        border-bottom: 1px solid #656565
     }
     button {
         padding: .5rem 2rem;
@@ -91,5 +89,9 @@
     }
     .hidden {
         display: none !important;
+    }
+    p {
+        color: #999;
+        font-size: .95rem;
     }
 </style>
