@@ -68,10 +68,12 @@
                 <span class="icon icon-selected"></span>
             </div>
         </com-cell>
+        <com-footer type="pay-order" @submit="submitHandle"></com-footer>
     </div>
 </template>
 <script>
     import comCell from '../components/comCell'
+    import comFooter from '../components/comFooter'
 
     export default {
         data() {
@@ -105,10 +107,14 @@
                 this.$router.push({
                     path: "/address"
                 })
+            },
+            submitHandle(){
+                alert("submit");
             }
         },
         components: {
-            comCell
+            comCell,
+            comFooter
         }
     }
 </script>

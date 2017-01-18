@@ -1,11 +1,17 @@
 <template>
     <div>
-        <div class="footer">
+        <div class="footer" v-if="type === 'submit-order'">
             <div id="check-in-cart" class="cart" @click="showCartFunc"><span class="total" :class="{hidden: total >= 1 ? false : true}">{{total}}</span></div>
             <div class="submit" id="submit-order" @click="submitFunc">
                 <slot name="submit-order-slot">
                     下单
                 </slot>
+            </div>
+        </div>
+        <div class="footer" :class="type" v-else>
+            <div class="pay-money">待支付:￥{{price}}</div>
+            <div class="submit" @click="submitFunc">
+                <slot>下单</slot>
             </div>
         </div>
     </div>
@@ -17,9 +23,18 @@
             
             }
         },
+        props: {
+            type: {
+                type: String,
+                default: "submit-order", //submit-order || pay-order
+            }
+        },
         computed:{
             total: function () {
                 return this.$store.getters.getProductTotalNumber;
+            },
+            price(){
+                return this.$store.getters.getProductTotalPrice;
             }
         },
         methods: {
@@ -34,6 +49,20 @@
 </script>
 
 <style scoped>
+    .footer.pay-order {
+        padding: 0
+    }
+     .footer.pay-order div {
+         padding: .5rem;
+         text-align: center
+     }
+    .footer.pay-order div:first-child{
+        width: 55%;
+    }
+    .footer.pay-order div:last-child{
+        width: 45%;
+        background: #ff8400;
+    }
     .footer {
         position: fixed;
         left: 0;
