@@ -6,8 +6,10 @@ import vuex from 'vuex'
 import vueRouter from 'vue-router'
 import store from './store/store'
 import mock from './server/mock'
+import Validator from 'vue-validator'
 
 Vue.use(vuex);
+Vue.use(Validator);
 Vue.use(vueResource);
 Vue.use(vueRouter);
 
