@@ -80,6 +80,15 @@ Mock.mock(
             }
         ]
     }
+).mock(
+    "/getUserInfo", {
+        "data": {
+            "name": "张三",
+            "tel": 15388888888,
+            "userId": "123",
+            "poenId": "123asfsdaf"
+        }
+    }
 );
 
 export default Mock

@@ -50,27 +50,13 @@
             <span>共{{total}}份, </span>
             <span>总计：<b>{{price}}</b>元</span>
         </div>
-        <div class="weui-panel weui-panel_access">
-            <div class="weui-panel__hd">备注信息</div>
-            <div class="weui-panel__ft">
-                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
-                    <div class="weui-cell__bd">
-                        <input type="text" name="address" placeholder="请输入您的用餐习惯">
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="weui-panel weui-panel_access pay">
-            <div class="weui-panel__hd">支付方式</div>
-            <div class="weui-panel__ft">
-                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
-                    <div class="weui-cell__bd">
-                        微信支付
-                    </div>
-                    <span class="icon icon-selected"></span>
-                </a>
-            </div>
-        </div>
+       <weui-panel title="备注信息">
+           <input type="text" name="address" slot="cell-bd" placeholder="请输入您的用餐习惯">
+       </weui-panel>
+       <weui-panel :hideIcon="true" title="支付方式">
+            <p slot="cell-bd">微信支付</p>
+            <span class="icon icon-selected" slot="cell-ft"></span>
+       </weui-panel>
         <div class="footer">
           <div class="price">待支付:￥{{price}}</div>
           <div class="sumit" @click="submitOrder">下单</div>
@@ -78,6 +64,7 @@
     </div>
 </template>
 <script>
+    import weuiPanel from '../components/weuiPanel'
     export default {
         data() {
             return {
@@ -101,11 +88,13 @@
             submitOrder(){
                 alert("submit order")
             }
+        },
+        components: {
+            weuiPanel
         }
     }
 </script>
 <style scoped>
-
    .weui-cell__bd input,
    .weui-cell__bd,
    .weui-panel__hd,
@@ -138,14 +127,10 @@
   }
   .weui-cells:before,
   .weui-cell:before,
-  .weui-panel__hd:after,
   .weui-panel:before {
       display: none;
   }
-  .weui-panel__hd {
-      color: #fff;
-      padding: 7px 15px 0px;
-  }
+ 
   .weui-cell {
       padding: 10px 15px
   }
