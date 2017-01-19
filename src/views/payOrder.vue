@@ -115,9 +115,6 @@
                     alert("请求出错，请联系管理员")
                 })
             },
-            submitOrder() {
-                alert("submit order")
-            },
             editUserInfo(){
                 this.$router.push({
                     path: "/userInfo"
