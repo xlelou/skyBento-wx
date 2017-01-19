@@ -3,23 +3,23 @@
         <p>订餐人信息</p>
         <com-cell :border="true" title="姓名">
             <div slot="body">
-                <input type="text" name="name" id="name" v-model="userInfo.username">
+                <input type="text" name="name" id="name" v-model="userInfo.name">
             </div>
         </com-cell>
          <com-cell :border="true" title="联系电话">
             <div slot="body">
-                <input type="text" name="tel" id="tel" v-model="userInfo.mobile">
+                <input type="text" name="tel" id="tel" v-model="userInfo.tel">
             </div>
         </com-cell>
 
         <com-cell :border="true" title="用户id" class="hidden">
             <div slot="body">
-                <input type="text" name="userid" id="userid" v-model="userInfo.userid">
+                <input type="text" name="userid" id="userid" v-model="userInfo.userId">
             </div>
         </com-cell>
         <com-cell :border="true" title="openid" class="hidden">
             <div slot="body">
-                <input type="text" name="openid" id="openid" v-model="userInfo.openid">
+                <input type="text" name="openid" id="openid" v-model="userInfo.openId">
             </div>
         </com-cell>
         <div style="display: flex; justify-content: center">
@@ -33,27 +33,28 @@
         data(){
             return {
                 userInfo: {
-                    username: "",
-                    mobile: "",
-                    userid: "",
-                    openid: "",
+                    name: "",
+                    tel: "",
+                    userId: "",
+                    openId: "",
                 }
             }
         },
         mounted(){
             const userInfo = JSON.parse(sessionStorage.getItem("userInfo")) || {}
-            const {username, mobile, userid, openid} = userInfo;
+            const {name, tel, userId, openId} = userInfo;
             this.userInfo = {
-                username,
-                mobile,
-                userid,
-                openid
+                name,
+                tel,
+                userId,
+                openId
             }
         },
         methods: {
             sumbit(){
-                const {username, mobile, userid, openid} = this.userInfo;
-                this.$http({method: "POST", params: {username, mobile, userid, openid}}).then((res)=>{
+                const {name, tel, userId, openId} = this.userInfo;
+                console.log(name, tel, userId, openId);
+                this.$http({method: "POST", params: {name, tel, userId, openId}}).then((res)=>{
                     //success
                 }).catch(()=>{
                     //error

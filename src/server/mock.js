@@ -81,13 +81,90 @@ Mock.mock(
         ]
     }
 ).mock(
-    "/getUserInfo", {
-        "data": {
-            "name": "张三",
-            "tel": 15388888888,
-            "userId": "123",
-            "poenId": "1234"
+    /\/getUserInfo\?*/, {
+         "data": {
+                    "name":Random.last(),
+                    "id":  Random.id(),
+                    "tel": "15388888888",
+                    "userId": Random.id(),
+                    "openId": Random.id(),
+             
         }
+    }
+).mock(
+    /\/getAddress\?*/, {
+         "data": [
+             {
+                 id: Random.id(),
+                 name: Random.city(true),
+                 detail: Random.title(3, 5)
+             },
+              {
+                 id: Random.id(),
+                 name: Random.city(true),
+                 detail: Random.title(3, 5)
+             },
+              {
+                 id: Random.id(),
+                 name: Random.city(true),
+                 detail: Random.title(3, 5)
+             },
+              {
+                 id: Random.id(),
+                 name: Random.city(true),
+                 detail: Random.title(3, 5)
+             }
+         ]
+    }
+).mock(
+   /\/getTalkTime\?*/, {
+    "message" : "成功",
+    "data" : {
+        "selectTime" : [ {
+        "id" : 7,
+        "name" : "223",
+        "startTime" : "10:30",
+        "endTime" : "11:30",
+        "remark" : "",
+        "weight" : 3
+        }, {
+        "id" : 8,
+        "name" : "444",
+        "startTime" : "12:00",
+        "endTime" : "15:18",
+        "remark" : "",
+        "weight" : 2
+        }, {
+        "id" : 9,
+        "name" : "测试",
+        "startTime" : "11:30",
+        "endTime" : "12:00",
+        "remark" : "",
+        "weight" : 1
+        } ],
+        "daylist" : [ {
+        "id" : 101,
+        "day" : 1479312000000,
+        "quantity" : 50,
+        "dishesId" : null
+        }, {
+        "id" : 102,
+        "day" : 1479398400000,
+        "quantity" : 50,
+        "dishesId" : null
+        }, {
+        "id" : 103,
+        "day" : 1479484800000,
+        "quantity" : 50,
+        "dishesId" : null
+        }, {
+        "id" : 104,
+        "day" : 1479571200000,
+        "quantity" : 50,
+        "dishesId" : null
+        } ]
+    },
+    "success" : true
     }
 );
 

@@ -5,25 +5,26 @@
                 订餐人信息
             </div>
             <div slot="footer">
-                <div v-show="userInfoIsNull" class="active">
+                <div v-show="userInfo == null" class="active">
                     +添加
                 </div>
-                <div v-show="!userInfoIsNull">
-
+                <div v-if="userInfo">
+                  <span>{{userInfo.name}}</span>
+                  <span>{{userInfo.tel}}</span>
                 </div>
             </div>
         </com-cell>
         <com-cell type="link" title="取餐地址" :border="true" @clickHandle="addAddress">
             <div slot="body">
-                <div v-show="addressIsNull">
+                <div v-show="!address || !address.addrName">
                     选择取餐地址
                 </div>
-                <div v-show="!userInfoIsNull">
-
+                <div v-if="address">
+                    {{address.addrName}}
                 </div>
             </div>
         </com-cell>
-        <com-cell type="link" :border="true" >
+        <com-cell type="link" :border="true" @clickHandle="showTimePicker = true">
             <div slot="body">
                 取餐时间
             </div>
@@ -31,7 +32,7 @@
                 <div v-show="timeIsNull" class="active">
                     选择取餐时间
                 </div>
-                <div v-show="!userInfoIsNull">
+                <div v-show="!timeIsNull">
 
                 </div>
             </div>
@@ -69,18 +70,21 @@
             </div>
         </com-cell>
         <com-footer type="pay-order" @submit="submitHandle"></com-footer>
+        <day-time-picker v-show="showTimePicker" :id="address.addressId"></day-time-picker>
     </div>
 </template>
 <script>
     import comCell from '../components/comCell'
     import comFooter from '../components/comFooter'
-
+    import dayTimePicker from '../components/dateTimePicker'
+   
     export default {
         data() {
             return {
                 timeIsNull: true,
-                userInfoIsNull: true,
-                addressIsNull: true,
+                userInfo: null,
+                address: true,
+                showTimePicker: false
             }
         },
         computed: {
@@ -94,7 +98,24 @@
                 return this.$store.getters.getProductTotalPrice
             }
         },
+        mounted(){
+           this.address = JSON.parse(sessionStorage.getItem("address")) || {};
+
+           this.getUserInfo();
+        },
         methods: {
+            getUserInfo(){
+                 this.$http({url: "/getUserInfo", method: "GET", params: {t: +new Date()}}).then((res)=>{
+                    var data = JSON.parse(res.data).data;
+                    
+                    sessionStorage.setItem("userInfo", JSON.stringify(data));
+
+                    this.userInfo = data;
+                }).catch((e)=>{
+                    console.log(e);
+                    alert("请求出错，请联系管理员")
+                })
+            },
             submitOrder() {
                 alert("submit order")
             },
@@ -114,7 +135,8 @@
         },
         components: {
             comCell,
-            comFooter
+            comFooter,
+            dayTimePicker
         }
     }
 </script>
