@@ -24,16 +24,16 @@
                 </div>
             </div>
         </com-cell>
-        <com-cell type="link" :border="true" @clickHandle="showTimePicker = true">
+        <com-cell type="link" :border="true" @clickHandle="showTimePicker">
             <div slot="body">
                 取餐时间
             </div>
             <div slot="footer">
-                <div v-show="timeIsNull" class="active">
+                <div v-show="!talkTime" class="active">
                     选择取餐时间
                 </div>
-                <div v-show="!timeIsNull">
-
+                <div v-if="talkTime">
+                    <span class="active">{{talkTime.dayValue}} {{talkTime.timeValue}}</span>
                 </div>
             </div>
         </com-cell>
@@ -58,7 +58,7 @@
         </div>
         <com-cell :border="true" title="订单备注">
             <div slot="body">
-                <input type="text" placeholder="输入您的用餐习惯">
+                <input type="text" placeholder="输入您的用餐习惯" v-model="desc">
             </div>
         </com-cell>
         <com-cell :border="true" title="付款方式">
@@ -70,21 +70,21 @@
             </div>
         </com-cell>
         <com-footer type="pay-order" @submit="submitHandle"></com-footer>
-        <day-time-picker v-show="showTimePicker" :id="address.addressId"></day-time-picker>
     </div>
 </template>
 <script>
+    import iosSelect from 'iosselect'
+    import css from '../lib/iosPicker.css'
     import comCell from '../components/comCell'
     import comFooter from '../components/comFooter'
-    import dayTimePicker from '../components/dateTimePicker'
    
     export default {
         data() {
             return {
-                timeIsNull: true,
+                talkTime: null,
                 userInfo: null,
-                address: true,
-                showTimePicker: false
+                address: null,
+                desc: ""
             }
         },
         computed: {
@@ -107,7 +107,6 @@
             getUserInfo(){
                  this.$http({url: "/getUserInfo", method: "GET", params: {t: +new Date()}}).then((res)=>{
                     var data = JSON.parse(res.data).data;
-                    
                     sessionStorage.setItem("userInfo", JSON.stringify(data));
 
                     this.userInfo = data;
@@ -130,13 +129,90 @@
                 })
             },
             submitHandle(){
-                alert("submit");
+                var orderItems = [],
+                    products = this.products,
+                    userInfo = JSON.parse(sessionStorage.getItem("userInfo")) || {},
+                    address = JSON.parse(sessionStorage.getItem("address")) || {};
+
+                if (!userInfo) {
+                    return;
+                }
+
+                products.forEach(function (item, index, array) {
+                    orderItems.push({
+                        dishes: {
+                            id: item.id,
+                            name: item.name,
+                            price2: item.price,
+                        },
+                        number: item.number
+                    });
+                });
+                var params = {
+                    money: this.price,
+                    distributionSites: {
+                        id: address.addressId,
+                        address: address.addrName
+                    },
+                    reserverTime: +new Date(this.talkTime.dayValue),
+                    times: {
+                        id: +this.talkTime.timeId
+                    },
+                    receiverName: userInfo.name,
+                    receiverTelephone: userInfo.tel,
+                    openid: userInfo.openId,
+                    status: "0",
+                    orderItems: orderItems,
+                    remarks: this.desc
+                };
+                console.log(params);
+                //post data
+                this.$router.push({
+                    path: "/orderDetail"
+                })
+            },
+            showTimePicker() {
+                 var self = this;
+                 this.$http({url: "/getTalkTime", method: "GET", params: {t: +new Date()}}).then((res)=>{
+                    var data = JSON.parse(res.data).data;
+                   
+                    data.daylist = data.daylist.map(function(item){
+                        return {
+                            id: item.id,
+                            value: (new Date(item.day)).toLocaleDateString()
+                        }
+                    });
+                    data.selectTime = data.selectTime.map(function(item) {
+                        return {
+                            id: item.id,
+                            value: item.startTime + "-" + item.endTime
+                        }
+                    });
+                   
+                    new iosSelect(2,
+                        [data.daylist, data.selectTime],
+                        {
+                            title: '选择时间',
+                            oneLevelId: self.talkTime ? self.talkTime.dayId : "",
+                            twoLevelId: self.talkTime ? self.talkTime.timeId : "",
+                            callback: function (day, time) {
+                                self.talkTime = {
+                                    dayId: day.id,
+                                    dayValue: day.value,
+                                    timeId: time.id,
+                                    timeValue: time.value
+                                };
+                            }
+                        });
+                }).catch((e)=>{
+                    console.log(e);
+                    alert("请求出错，请联系管理员")
+                });
             }
         },
         components: {
             comCell,
             comFooter,
-            dayTimePicker
         }
     }
 </script>

@@ -24,6 +24,11 @@ const routes = [
         name: "userInfo"
     },
     {
+        path: "/orderDetail",
+        component: require('../views/orderDetail'),
+        name: "orderDetail"
+    },
+    {
         path: "*",
         component: require('../views/notFoundPage')
     }
