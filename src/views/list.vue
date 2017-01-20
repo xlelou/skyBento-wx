@@ -1,13 +1,14 @@
 <template>
     <div>
         <button type="button" class="prev" @click="getPrevProduct" v-show="pageIndex == 1 ? false : true"></button>
-        <product :product="dishesData"></product>
+        <product v-if="dishesData" :product="dishesData"></product>
         <com-menu @toggle="toggleFunc" ref="menu" @load="loadFunc"></com-menu>
         <button type="button" class="next" @click="getNextProduct" v-show="isOver ? false : true"></button>
         <com-footer @submit="submitOrder" @showCart="show = true">
            <p slot="submit-order-slot">提交订单</p>
         </com-footer>
         <action-sheet :show="show" :dataSource="dataSource" @hide="show = false"></action-sheet>
+        <pulse-loader v-if="!dishesData"></pulse-loader>
     </div>
 </template>
 <script>
@@ -16,6 +17,7 @@
     import product from '../components/product'
     import actionSheet from '../components/actionSheet'
     import api from '../api/api'
+    import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
     export default {
         data() {
             return {
@@ -75,7 +77,8 @@
             comFooter,
             comMenu,
             product,
-            actionSheet
+            actionSheet,
+            PulseLoader
         }
     }
 </script>

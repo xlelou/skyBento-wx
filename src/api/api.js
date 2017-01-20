@@ -70,5 +70,15 @@ export default {
             });
         });
         return p; 
+    },
+    getOrderDetail(params){
+        var p = new Promise(function(resolve, reject){
+            axios.get("/getOrderDetail", {method: "get", params}).then(res=>{
+                resolve(res);
+            }).catch((res)=>{
+                reject(res)
+            });
+        });
+        return p; 
     }
 }

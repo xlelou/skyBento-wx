@@ -1,36 +1,50 @@
 const routes = [
     {
         path: "/list",
-        component: require('../views/list'),
+        component: function(resolve) {
+             require(['../views/list'], resolve);
+        },
         name: 'list'
     },
     {
         path: "/detail/:id",
-        component: require('../views/detail'),
+        component: function(resolve) {
+             require(['../views/detail'], resolve);
+        },
     },
     {
         path: "/payOrder",
-        component: require('../views/payOrder'),
+        component: function(resolve) {
+             require(['../views/payOrder'], resolve);
+        },
         name: "payOrder"
     }, 
     {
         path: "/address",
-        component: require('../views/address'),
+        component:  function(resolve) {
+             require(['../views/address'], resolve);
+        },
         name: "address"
     },
      {
         path: "/userInfo",
-        component: require('../views/editUserInfo'),
+        component: function(resolve) {
+             require(['../views/editUserInfo'], resolve);
+        },
         name: "userInfo"
     },
     {
-        path: "/orderDetail",
-        component: require('../views/orderDetail'),
+        path: "/orderDetail/:orderId",
+        component: function(resolve) {
+             require(['../views/orderDetail'], resolve);
+        },
         name: "orderDetail"
     },
     {
         path: "*",
-        component: require('../views/notFoundPage')
+        component: function(resolve) {
+             require(['../views/notFoundPage'], resolve);
+        },
     }
 ]
 export default routes
