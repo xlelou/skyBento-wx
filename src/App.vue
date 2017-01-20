@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition name="slide-left">
+    <transition transition-mode="in-out">
         <router-view></router-view>
     </transition>
   </div>
@@ -30,4 +30,5 @@
 	margin: 0;
 	font-family: "Microsoft YaHei";
 }
+
 </style>

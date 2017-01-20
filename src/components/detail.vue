@@ -18,9 +18,7 @@
         },
         mounted(){
               this.$http({method: "GET", params: {id: this.id,}, url: "/detail"}).then(res=>{
-                   var data = (JSON.parse(res.data)).data.goodsImg;
-                  
-                   this.detail = data;
+                 this.detail = (JSON.parse(res.data)).data.goodsImg;
                }).catch(function(){
                    alert("请求出错，请联系管理员")
                })

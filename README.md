@@ -1,6 +1,6 @@
 # skybento-wx
 
-> 一个基于vue开发的外卖订餐页面
+> 一个基于vue + vue-router + vuex开发的外卖订餐页面
 
 ## Build Setup
 

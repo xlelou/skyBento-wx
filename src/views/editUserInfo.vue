@@ -40,25 +40,23 @@
                 }
             }
         },
-        mounted(){
-            const userInfo = JSON.parse(sessionStorage.getItem("userInfo")) || {}
-            const {name, tel, userId, openId} = userInfo;
-            this.userInfo = {
-                name,
-                tel,
-                userId,
-                openId
-            }
+        beforeRouteEnter: (to, from, next) => {
+            next(vm => {
+                const userInfo = JSON.parse(sessionStorage.getItem("userInfo")) || {}
+                const {name, tel, userId, openId} = userInfo;
+                vm.userInfo = {
+                    name,
+                    tel,
+                    userId,
+                    openId
+                }
+            });
         },
         methods: {
             sumbit(){
                 const {name, tel, userId, openId} = this.userInfo;
                 console.log(name, tel, userId, openId);
-                this.$http({method: "POST", params: {name, tel, userId, openId}}).then((res)=>{
-                    //success
-                }).catch(()=>{
-                    //error
-                });
+                //to post data
             }
         },
         components: {

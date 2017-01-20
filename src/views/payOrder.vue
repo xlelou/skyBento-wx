@@ -77,6 +77,7 @@
     import css from '../lib/iosPicker.css'
     import comCell from '../components/comCell'
     import comFooter from '../components/comFooter'
+    import api from '../api/api'
    
     export default {
         data() {
@@ -98,23 +99,18 @@
                 return this.$store.getters.getProductTotalPrice
             }
         },
-        mounted(){
-           this.address = JSON.parse(sessionStorage.getItem("address")) || {};
-
-           this.getUserInfo();
-        },
-        methods: {
-            getUserInfo(){
-                 this.$http({url: "/getUserInfo", method: "GET", params: {t: +new Date()}}).then((res)=>{
-                    var data = JSON.parse(res.data).data;
+        beforeRouteEnter: (to, from, next) => {
+            api.getUserInfo({t: +new Date}, (res)=>{
+                next(vm => {
+                    const data = res.data.data;
                     sessionStorage.setItem("userInfo", JSON.stringify(data));
 
-                    this.userInfo = data;
-                }).catch((e)=>{
-                    console.log(e);
-                    alert("请求出错，请联系管理员")
-                })
-            },
+                    vm.userInfo = data;
+                    vm.address = JSON.parse(sessionStorage.getItem("address")) || {};
+                });
+            });
+        },
+        methods: {
             editUserInfo(){
                 this.$router.push({
                     path: "/userInfo"

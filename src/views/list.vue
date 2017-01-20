@@ -15,6 +15,7 @@
     import comMenu from '../components/comMenu'
     import product from '../components/product'
     import actionSheet from '../components/actionSheet'
+    import api from '../api/api'
     export default {
         data() {
             return {
@@ -30,8 +31,6 @@
             dataSource(){
                return this.$store.getters.getProducts
             }
-        },
-        mounted(){
         },
         methods: {
             //获取上一页商品
@@ -59,16 +58,14 @@
                    this.pageIndex = 1;
                }
                console.log(pageIndex, this.pageIndex);
-               this.$http({method: "GET", params: {id: id, pageIndex: pageIndex}, url: "/index/getDishesData"}).then(res=>{
-                   var data = (JSON.parse(res.data)).data[0];
+               api.getDishesData( {id: id, pageIndex: pageIndex}, (res)=>{
+                   var data = res.data.data[0];
                    
                    if (!data) {
                        this.isOver = true;
                        return;
                    }
                    this.dishesData = data;
-               }).catch(function(){
-                   alert("请求出错，请联系管理员")
                })
             }
         },

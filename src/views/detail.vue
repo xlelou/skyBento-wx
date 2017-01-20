@@ -19,8 +19,10 @@
                 评价
             </li>
         </ul>
-        <product-detail :id="id" v-if="isProductDetail === 'detail' ? true : false "></product-detail>
-        <comment :id="id" v-if="isProductDetail === 'comment' ? true : false "></comment>
+        <transition name="component-fade" mode="out-in">
+            <product-detail :id="id" v-if="isProductDetail === 'detail' ? true : false "></product-detail>
+            <comment :id="id" v-if="isProductDetail === 'comment' ? true : false "></comment>
+        </transition>
         <com-footer @submit="submitOrder" @showCart="show = true">
            <p slot="submit-order-slot">提交订单</p>
         </com-footer>
@@ -32,6 +34,7 @@
     import actionSheet from '../components/actionSheet'
     import productDetail from '../components/detail'
     import comment from '../components/comment'
+    import api from '../api/api'
 
     export default {
         data(){
@@ -45,19 +48,17 @@
                 id: this.$route.params.id
             }
         },
-         computed: {
+        computed: {
             dataSource(){
                return this.$store.getters.getProducts
             }
         },
-        mounted(){
-              this.$http({method: "GET", params: {id: this.$route.params.id,}, url: "/index/getDishesData"}).then(res=>{
-                   var data = (JSON.parse(res.data)).data[0];
-                  
-                   this.product = data;
-               }).catch(function(){
-                   alert("请求出错，请联系管理员")
-               })
+        beforeRouteEnter: (to, from, next) => {
+            api.getDishesData({id: to.params.id}, (res)=>{
+                next(vm => {
+                    vm.product = res.data.data[0];
+                })
+            });
         },
         methods: {
              submitOrder(){
@@ -74,9 +75,6 @@
 
                 this.$store.dispatch('checkInCart', this.product);
             },
-            toggleMenu(){
-
-            }
         },
         components: {
             comFooter,
@@ -143,5 +141,11 @@
     }
     .tab li.active {
         color: #fff;
+    }
+    .component-fade-enter-active, .component-fade-leave-active {
+        transition: opacity .2s ease;
+    }
+    .component-fade-enter, .component-fade-leave-active {
+        opacity: 0;
     }
 </style>

@@ -17,18 +17,19 @@
     </div>
 </template>
 <script>
+    import api from '../api/api'
     export default {
         data(){
             return {
                 addressList: []
             }
         },
-        mounted(){
-            this.$http({url: "/getAddress", method: "GET", params: {t: +new Date}}).then(res=>{
-                this.addressList = JSON.parse(res.data).data
-            }).catch(()=>{
-                alert("请求出错，请联系管理员")
-            })
+        beforeRouteEnter (to, from, next) {
+            api.getAddress({t: +new Date}, (res)=>{
+                 next(vm => {
+                    vm.addressList = res.data.data
+                 });
+            });
         },
         methods: {
             confirmAddress({id, name, detail}){

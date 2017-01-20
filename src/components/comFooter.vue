@@ -1,7 +1,12 @@
 <template>
     <div>
         <div class="footer" v-if="type === 'submit-order'">
-            <div id="check-in-cart" class="cart" @click="showCartFunc"><span class="total" :class="{hidden: total >= 1 ? false : true}">{{total}}</span></div>
+            <div id="check-in-cart" class="cart" @click="showCartFunc">
+                <transition enter-active-class="animated bounceIn">
+                    <span class="total" v-if="total >= 1 ? true : false">{{total}}</span>
+                </transition>
+            </div>
+           
             <div class="submit" id="submit-order" @click="submitFunc">
                 <slot name="submit-order-slot">
                     下单
@@ -112,8 +117,5 @@
         right: -.3rem;
         top: -.3rem;
         color: #fff;
-    }
-    .total.hidden {
-        display: none
     }
 </style>

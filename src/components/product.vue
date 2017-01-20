@@ -101,7 +101,6 @@
      .product-item .product-desc {
          font-size: .9rem;
          list-style-type: square;
-         margin-left: 1rem;
      }
      .product-price span {
          font-size: 1.2rem;
