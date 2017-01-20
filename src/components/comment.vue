@@ -29,6 +29,7 @@
     </div>
 </template>
 <script>
+    import api from '../api/api'
     export default {
         data() {
             return {
@@ -45,10 +46,10 @@
             }
         },
         mounted() {
-            this.$http({ method: "GET", params: { id: this.id, }, url: "/comment" }).then(res => {
-                this.commentList = (JSON.parse(res.data)).data.list;
-            }).catch(function () {
-                alert("请求出错，请联系管理员")
+            api.getComment({id: this.id}).then( res=> {
+                this.commentList = res.data.data.list;
+            }).catch((res)=>{
+                alert("error");
             });
             this.loadMoreData();
         },
@@ -92,17 +93,18 @@
                     if(self.getScrollTop() + self.getWindowHeight() == self.getScrollHeight() && !self.isOver && !self.isLoading){
                         self.isLoading = true;
                         console.log(self.pageIndex);
-                　　　　 self.$http({ method: "GET", params: { id: self.id, pageIndex: ++self.pageIndex}, url: "/comment" }).then(res => {
-                            const data = (JSON.parse(res.data)).data.list;
-                            if (!data.length || self.pageIndex > 5) {
-                                self.isOver = true;
-                            }
-                            
-                            self.commentList.push(...data);
-                            self.isLoading = false;
-                        }).catch(function () {
-                            alert("请求出错，请联系管理员")
-                        });
+                           api.getComment({id: this.id, pageIndex: ++self.pageIndex}).then( res=> {
+                               const data = res.data.data.list;
+                                if (!data.length || self.pageIndex > 5) {
+                                    self.isOver = true;
+                                }
+                                
+                                self.commentList.push(...data);
+                                self.isLoading = false;
+                                this.commentList = res.data.data.list;
+                            }).catch((res)=>{
+                                alert("error");
+                            });
                 　　}
                 }
             }

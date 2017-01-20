@@ -8,6 +8,7 @@
     </div>
 </template>
 <script>
+    import api from '../api/api'
     export default {
         data() {
             return {
@@ -18,14 +19,15 @@
             }
         },
         mounted() {
-            this.$http({ method: "GET", url: "/index/getDishesTypeData" }).then(res => {
-                this.getDishesTypeData = (JSON.parse(res.data)).data;
+            api.getDishesTypeData(null).then((res)=>{
+                this.getDishesTypeData = res.data.data;
                
                 this.$nextTick(()=>{
                     this.$emit("load");
                 });
-            }).catch(() => alert("请求出错"));
-
+            }).catch((res)=>{
+                alert("error");
+            });
         },
         methods: {
             toggle(id, index) {

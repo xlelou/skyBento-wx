@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App'
 import routes from './router/route'
-import vueResource from 'vue-resource'
 import vuex from 'vuex'
 import vueRouter from 'vue-router'
 import store from './store/store'
@@ -10,7 +9,6 @@ import Validator from 'vue-validator'
 
 Vue.use(vuex);
 Vue.use(Validator);
-Vue.use(vueResource);
 Vue.use(vueRouter);
 
 const router = new vueRouter({

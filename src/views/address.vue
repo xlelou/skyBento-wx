@@ -25,10 +25,12 @@
             }
         },
         beforeRouteEnter (to, from, next) {
-            api.getAddress({t: +new Date}, (res)=>{
+            api.getAddress({t: +new Date}).then((res)=>{
                  next(vm => {
                     vm.addressList = res.data.data
                  });
+            }).catch(() => {
+                alert("error")
             });
         },
         methods: {

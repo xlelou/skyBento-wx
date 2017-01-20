@@ -40,7 +40,7 @@
                 }
             }
         },
-        beforeRouteEnter: (to, from, next) => {
+        beforeRouteEnter(to, from, next){
             next(vm => {
                 const userInfo = JSON.parse(sessionStorage.getItem("userInfo")) || {}
                 const {name, tel, userId, openId} = userInfo;

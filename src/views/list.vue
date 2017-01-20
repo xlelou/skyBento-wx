@@ -58,7 +58,7 @@
                    this.pageIndex = 1;
                }
                console.log(pageIndex, this.pageIndex);
-               api.getDishesData( {id: id, pageIndex: pageIndex}, (res)=>{
+               api.getDishesData( {id: id, pageIndex: pageIndex}).then((res)=>{
                    var data = res.data.data[0];
                    
                    if (!data) {
@@ -66,7 +66,9 @@
                        return;
                    }
                    this.dishesData = data;
-               })
+               }).catch(()=>{
+                   alert("error")
+               });
             }
         },
         components: {

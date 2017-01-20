@@ -53,11 +53,13 @@
                return this.$store.getters.getProducts
             }
         },
-        beforeRouteEnter: (to, from, next) => {
-            api.getDishesData({id: to.params.id}, (res)=>{
-                next(vm => {
+        beforeRouteEnter(to, from, next){
+            api.getDishesData({id: to.params.id}).then((res)=>{
+                 next(vm => {
                     vm.product = res.data.data[0];
                 })
+            }).catch(()=>{
+                alert("error")
             });
         },
         methods: {

@@ -4,6 +4,7 @@
     </div>
 </template>
 <script>
+    import api from '../api/api'
     export default {
         data(){
             return {
@@ -17,11 +18,11 @@
             }
         },
         mounted(){
-              this.$http({method: "GET", params: {id: this.id,}, url: "/detail"}).then(res=>{
-                 this.detail = (JSON.parse(res.data)).data.goodsImg;
-               }).catch(function(){
-                   alert("请求出错，请联系管理员")
-               })
+            api.getProductDetail( {id: this.id,}).then(res=>{
+                this.detail = res.data.data.goodsImg;
+            }).catch(res=>{
+                alert("error")
+            })
         },
     }
 </script>

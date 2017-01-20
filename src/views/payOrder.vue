@@ -99,15 +99,17 @@
                 return this.$store.getters.getProductTotalPrice
             }
         },
-        beforeRouteEnter: (to, from, next) => {
-            api.getUserInfo({t: +new Date}, (res)=>{
-                next(vm => {
+        beforeRouteEnter(to, from, next){
+            api.getUserInfo({t: +new Date}).then((res)=>{
+                 next(vm => {
                     const data = res.data.data;
                     sessionStorage.setItem("userInfo", JSON.stringify(data));
 
                     vm.userInfo = data;
                     vm.address = JSON.parse(sessionStorage.getItem("address")) || {};
                 });
+            }).catch(()=>{
+                alert("error")
             });
         },
         methods: {
@@ -166,8 +168,8 @@
             },
             showTimePicker() {
                  var self = this;
-                 this.$http({url: "/getTalkTime", method: "GET", params: {t: +new Date()}}).then((res)=>{
-                    var data = JSON.parse(res.data).data;
+                 api.getTalkTime({t: +new Date()}).then(res=>{
+                     var data = res.data.data;
                    
                     data.daylist = data.daylist.map(function(item){
                         return {
@@ -197,10 +199,9 @@
                                 };
                             }
                         });
-                }).catch((e)=>{
-                    console.log(e);
-                    alert("请求出错，请联系管理员")
-                });
+                 }).catch(()=>{
+                     alert("error");
+                 })
             }
         },
         components: {
