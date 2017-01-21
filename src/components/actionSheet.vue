@@ -61,6 +61,9 @@
     }
 </script>
 <style scoped>
+    .weui-actionsheet__action {
+        margin-top:0
+    }
     .weui-actionsheet__cell:hover,
     .weui-actionsheet__cell:link,
     .weui-actionsheet__cell:active,

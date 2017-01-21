@@ -92,7 +92,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
     h5 {
         font-weight: normal;
         font-size: 1rem;
@@ -166,10 +166,5 @@
     }
     .order-info > div span {
         width: 30%;
-    }
-    canvas {
-        display: block;
-        border-bottom: 1px solid #fff;
-        margin: 0 auto
     }
 </style>

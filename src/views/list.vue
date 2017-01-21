@@ -8,7 +8,6 @@
            <p slot="submit-order-slot">提交订单</p>
         </com-footer>
         <action-sheet :show="show" :dataSource="dataSource" @hide="show = false"></action-sheet>
-        <pulse-loader v-if="!dishesData"></pulse-loader>
     </div>
 </template>
 <script>
@@ -17,7 +16,6 @@
     import product from '../components/product'
     import actionSheet from '../components/actionSheet'
     import api from '../api/api'
-    import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
     export default {
         data() {
             return {
@@ -78,7 +76,6 @@
             comMenu,
             product,
             actionSheet,
-            PulseLoader
         }
     }
 </script>

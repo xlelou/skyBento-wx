@@ -1,5 +1,13 @@
 const routes = [
     {
+        path: "/",
+        beforeEnter: (to, from, next) => {
+            if (to.path === "/") { 
+                next({ path: "/list"})
+            }
+        }
+    },
+    {
         path: "/list",
         component: function(resolve) {
              require(['../views/list'], resolve);
@@ -39,6 +47,13 @@ const routes = [
              require(['../views/orderDetail'], resolve);
         },
         name: "orderDetail"
+    },
+    {
+        path: "/myOrder",
+        component: function(resolve) {
+             require(['../views/myOrder'], resolve);
+        },
+        name: "myOrder"
     },
     {
         path: "*",

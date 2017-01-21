@@ -201,6 +201,27 @@ Mock.mock(
             }]
         }
     }
-    );
+    ).mock(/\/getOrder\?*/, 
+    {
+         "array|1-10": [
+        {
+             "id":  Random.id(),
+             "orderNo" : Random.integer(),
+             "receiverName": Random.cname(),
+             "reserverTime": Random.datetime(),
+             "openid" : "oeFXbwBKFqs5oYdao_Tn7HPZ-fbk",
+             "receiverTelephone" : "13771145784",
+             "status|0-5": 1,
+             "createtime" : Random.datetime(),
+             "orderItems" : [ {
+                "id" : Random.id(),
+                "orderNo" : Random.integer(),
+                "number|1-5" : 1,
+                "price|10-20" : 12,
+                "dishesName|1" : ["青椒土豆丝", "卤肉饭", "香肠炒饭"],
+            }]
+            }
+        ]
+    });
 
 export default Mock

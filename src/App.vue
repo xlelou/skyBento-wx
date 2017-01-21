@@ -14,21 +14,18 @@
       return {
 
       }
-    },
-    mounted() {
-      if (this.$route.path === '/') {
-        this.$router.push({
-          path: '/list'
-        });
-      }
     }
   }
 </script>
 <style>
   * {
-	padding: 0;
-	margin: 0;
-	font-family: "Microsoft YaHei";
-}
-
+    padding: 0;
+    margin: 0;
+    font-family: "Microsoft YaHei";
+  }
+    canvas {
+        display: block;
+        border: 1px solid #fff;
+        margin: 0 auto
+    }
 </style>
