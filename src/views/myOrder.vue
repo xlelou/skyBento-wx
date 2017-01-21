@@ -36,55 +36,27 @@
         mounted() {
             this.loadMoreData();
         },
+        destroyed(){
+            window.onscroll = null;
+        },
         methods: {
             toOrderDetail(e) {
                 this.$router.push({
                     path: `/orderDetail/${e}`
                 })
             },
-            getScrollTop() {
-                let scrollTop = 0, bodyScrollTop = 0, documentScrollTop = 0;
-                if (document.body) {
-                    bodyScrollTop = document.body.scrollTop;
-                }
-                if (document.documentElement) {
-                    documentScrollTop = document.documentElement.scrollTop;
-                }
-                scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
-                return scrollTop;
-            },
-            //文档的总高度
-            getScrollHeight() {
-                let scrollHeight = 0, bodyScrollHeight = 0, documentScrollHeight = 0;
-                if (document.body) {
-                    bodyScrollHeight = document.body.scrollHeight;
-                }
-                if (document.documentElement) {
-                    documentScrollHeight = document.documentElement.scrollHeight;
-                }
-                scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
-                return scrollHeight;
-            },
-            //浏览器视口的高度
-            getWindowHeight() {
-                let windowHeight = 0;
-                if (document.compatMode == "CSS1Compat") {
-                    windowHeight = document.documentElement.clientHeight;
-                } else {
-                    windowHeight = document.body.clientHeight;
-                }
-                return windowHeight;
-            },
             loadMoreData() {
                 let self = this;
                 window.onscroll = function () {
-                    if (self.getScrollTop() + self.getWindowHeight() == self.getScrollHeight() && !self.isOver && !self.isLoading) {
+                     var scrollTop = document.body.scrollTop;
+                     if(scrollTop + window.innerHeight >= document.body.clientHeight  && !self.isOver && !self.isLoading) {
                         self.isLoading = true;
                         console.log(self.pageIndex);
                         api.getOrder({ pageIndex: ++self.pageIndex }).then(({data}) => {
                             const result = data.data;
                             if (!result.length || self.pageIndex > 5) {
                                 self.isOver = true;
+                                window.onscroll = null;
                             }
                             self.order.push(...result);
                             self.isLoading = false;
