@@ -65,16 +65,31 @@
         },
         computed: {
             state(){
+                var state;
                 switch(this.orderDetail.status) {
+                   case -1:
+                        state = "已取消";
+                        break;
+                    case 0:
+                        state = "未支付";
+                        break;
                     case 1:
-                        return "已支付";
-                    case 0: 
-                        return "未支付";
-                    case -1:
-                        return "已取消";
+                        state = '已支付';
+                        break;
                     case 2:
-                        return "已完成"
+                        state = "已完成";
+                        break;
+                    case 3:
+                        state = "申请退款中";
+                        break;
+                    case 4:
+                        state = "已退款";
+                        break;
+                    case 5:
+                        state = "取消退款";
+                        break;
                 }
+                return state;
             }
         },
         beforeRouteEnter(to, from, next) {

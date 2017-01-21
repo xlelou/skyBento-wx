@@ -1,6 +1,7 @@
 const routes = [
     {
         path: "/",
+        //匹配空路由跳转到list页面
         beforeEnter: (to, from, next) => {
             if (to.path === "/") { 
                 next({ path: "/list"})
@@ -48,7 +49,19 @@ const routes = [
         },
         name: "orderDetail"
     },
+     {
+        path: "/applyRefund/:orderNo",
+        component: function(resolve) {
+             require(['../views/applyRefund'], resolve);
+        },
+    },
     {
+        path: "/comment/:orderNo",
+        component: function(resolve) {
+             require(['../views/comment'], resolve);
+        },
+    },
+     {
         path: "/myOrder",
         component: function(resolve) {
              require(['../views/myOrder'], resolve);

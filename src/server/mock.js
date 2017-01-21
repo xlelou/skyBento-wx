@@ -203,7 +203,7 @@ Mock.mock(
     }
     ).mock(/\/getOrder\?*/, 
     {
-         "array|1-10": [
+         "data|1-10": [
         {
              "id":  Random.id(),
              "orderNo" : Random.integer(),
@@ -213,13 +213,15 @@ Mock.mock(
              "receiverTelephone" : "13771145784",
              "status|0-5": 1,
              "createtime" : Random.datetime(),
-             "orderItems" : [ {
+             "orderItems|1-5" : [ {
                 "id" : Random.id(),
                 "orderNo" : Random.integer(),
                 "number|1-5" : 1,
                 "price|10-20" : 12,
                 "dishesName|1" : ["青椒土豆丝", "卤肉饭", "香肠炒饭"],
-            }]
+            }],
+            "total": 2,
+            "price": 15.5
             }
         ]
     });

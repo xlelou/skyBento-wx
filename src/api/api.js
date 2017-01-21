@@ -80,5 +80,15 @@ export default {
             });
         });
         return p; 
+    },
+    getOrder(params) {
+        var p = new Promise(function(resolve, reject){
+            axios.get("/getOrder", {method: "get", params}).then(res=>{
+                resolve(res);
+            }).catch((res)=>{
+                reject(res)
+            });
+        });
+        return p;
     }
 }
