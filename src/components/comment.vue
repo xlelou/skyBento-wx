@@ -65,13 +65,14 @@
                         self.isLoading = true;
                         console.log(self.pageIndex);
                         api.getComment({id: this.id, pageIndex: ++self.pageIndex}).then(({data})=> {
-                               const result = data.data.list;
+                                const result = data.data.list;
+                                self.isLoading = false;
                                 if (!result.length || self.pageIndex > 5) {
                                     self.isOver = true;
                                     window.onscroll = null;
+                                    return;
                                 }
                                 self.commentList.push(...result);
-                                self.isLoading = false;
                             }).catch((res)=>{
                                 alert("error");
                             });

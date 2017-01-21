@@ -54,12 +54,13 @@
                         console.log(self.pageIndex);
                         api.getOrder({ pageIndex: ++self.pageIndex }).then(({data}) => {
                             const result = data.data;
+                            self.isLoading = false;
                             if (!result.length || self.pageIndex > 5) {
                                 self.isOver = true;
                                 window.onscroll = null;
+                                return;
                             }
                             self.order.push(...result);
-                            self.isLoading = false;
                         }).catch((res) => {
                             alert("error");
                         });

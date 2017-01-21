@@ -26,12 +26,12 @@
         <com-footer @submit="submitOrder" @showCart="show = true">
            <p slot="submit-order-slot">提交订单</p>
         </com-footer>
-        <action-sheet :show="show" :dataSource="dataSource" @hide="show = false"></action-sheet>
+        <cart :show="show" :dataSource="dataSource" @hide="show = false"></cart>
     </div>
 </template>
 <script>
     import comFooter from '../components/comFooter'
-    import actionSheet from '../components/actionSheet'
+    import cart from '../components/cart'
     import productDetail from '../components/detail'
     import comment from '../components/comment'
     import api from '../api/api'
@@ -80,7 +80,7 @@
         },
         components: {
             comFooter,
-            actionSheet,
+            cart,
             productDetail,
             comment
         }
