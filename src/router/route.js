@@ -60,6 +60,12 @@ const routes = [
         component: function(resolve) {
              require(['../views/comment'], resolve);
         },
+    }, 
+    {
+        path: "/commentDishes/:orderNo/:dishesId",
+        component: function(resolve) {
+             require(['../views/commentDishes'], resolve);
+        },
     },
      {
         path: "/myOrder",

@@ -90,5 +90,15 @@ export default {
             });
         });
         return p;
+    },
+    getDishesDetail(params) {
+        var p = new Promise(function(resolve, reject){
+            axios.get("/getDishesDetail", {method: "get", params}).then(res=>{
+                resolve(res);
+            }).catch((res)=>{
+                reject(res)
+            });
+        });
+        return p;
     }
 }

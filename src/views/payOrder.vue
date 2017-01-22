@@ -132,7 +132,10 @@
                 if (!userInfo) {
                     return;
                 }
-
+                if (!this.talkTime) {
+                    alert("选择取餐时间")
+                    return;
+                }
                 products.forEach(function (item, index, array) {
                     orderItems.push({
                         dishes: {

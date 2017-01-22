@@ -81,7 +81,7 @@
     }
     textarea {
         width: 100%;
-        height: 4rem;
+        height: 5rem;
         color: #fff;
         outline: none;
         font-size: .9rem;

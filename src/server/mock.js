@@ -167,63 +167,68 @@ Mock.mock(
     }).mock(
     /\/getOrderDetail\?*/, {
         "data": {
-            "orderId":  Random.id(),
+            "orderId": Random.id(),
             "status": 1,
             "reserveTime": +new Date(),
-            "receiverName" : "小阿狸",
-            "receiverTelephone" : "13771145784",
-            "openid" : "oeFXbwBKFqs5oYdao_Tn7HPZ-fbk",
+            "receiverName": "小阿狸",
+            "receiverTelephone": "13771145784",
+            "openid": "oeFXbwBKFqs5oYdao_Tn7HPZ-fbk",
             "address": "工业园区创意产业园",
-            "remarks" : "",
-            "createtime" : 1484895692000,
-            "orderNo" : "484895692055",
+            "remarks": "",
+            "createtime": 1484895692000,
+            "orderNo": "484895692055",
             "price": 44.00,
             "total": 3,
-            "orderItems" : [{
-                "id" : 2148,
-                "dishes" : {
-                    "id" : 5,
-                    "name" : "青椒土豆丝",
-                    "price" : 20.0,
+            "orderItems": [{
+                "id": 2148,
+                "dishes": {
+                    "id": 5,
+                    "name": "青椒土豆丝",
+                    "price": 20.0,
                 },
-                "number" : 1,
-                "price" : 20.0,
+                "number": 1,
+                "price": 20.0,
             },
             {
-                "id" : 2149,
-                "dishes" : {
-                    "id" : 4,
-                    "name" : "卤肉饭",
-                    "price" : 24.0,
+                "id": 2149,
+                "dishes": {
+                    "id": 4,
+                    "name": "卤肉饭",
+                    "price": 24.0,
                 },
-                "number" : 2,
-                "price" : 24.0,
+                "number": 2,
+                "price": 24.0,
             }]
         }
     }
-    ).mock(/\/getOrder\?*/, 
+    ).mock(/\/getOrder\?*/,
     {
-         "data|1-10": [
-        {
-             "id":  Random.id(),
-             "orderNo" : Random.integer(),
-             "receiverName": Random.cname(),
-             "reserverTime": Random.datetime(),
-             "openid" : "oeFXbwBKFqs5oYdao_Tn7HPZ-fbk",
-             "receiverTelephone" : "13771145784",
-             "status|0-5": 1,
-             "createtime" : Random.datetime(),
-             "orderItems|1-5" : [ {
-                "id" : Random.id(),
-                "orderNo" : Random.integer(),
-                "number|1-5" : 1,
-                "price|10-20" : 12,
-                "dishesName|1" : ["青椒土豆丝", "卤肉饭", "香肠炒饭"],
-            }],
-            "total": 2,
-            "price": 15.5
+        "data|1-10": [
+            {
+                "id": Random.id(),
+                "orderNo": Random.integer(),
+                "receiverName": Random.cname(),
+                "reserverTime": Random.datetime(),
+                "openid": "oeFXbwBKFqs5oYdao_Tn7HPZ-fbk",
+                "receiverTelephone": "13771145784",
+                "status|0-5": 1,
+                "createtime": Random.datetime(),
+                "orderItems|1-5": [{
+                    "id": Random.id(),
+                    "orderNo": Random.integer(),
+                    "number|1-5": 1,
+                    "price|10-20": 12,
+                    "dishesName|1": ["青椒土豆丝", "卤肉饭", "香肠炒饭"],
+                }],
+                "total": 2,
+                "price": 15.5
             }
         ]
+    }).mock(/\/getDishesDetail\?*/, {
+        "data": {
+            "name": "卤肉饭",
+            "id": 12
+        }
     });
 
 export default Mock
