@@ -75,6 +75,13 @@ const routes = [
         name: "myOrder"
     },
     {
+        path: "/paySuccess",
+        component: function(resolve) {
+             require(['../views/paySuccess'], resolve);
+        },
+        name: "paySuccess"
+    },
+    {
         path: "*",
         component: function(resolve) {
              require(['../views/notFoundPage'], resolve);

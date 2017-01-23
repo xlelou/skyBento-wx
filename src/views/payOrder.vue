@@ -168,7 +168,7 @@
                 var orderId = +new Date;
                 alert("支付");
                 this.$router.push({
-                    path: `/orderDetail/${orderId}`
+                    path: `/paySuccess`
                 })
             },
             showTimePicker() {

@@ -3,6 +3,9 @@
         <div class="header"><span class="icon icon-info"></span>
             <h5>9点之前可申请退款</h5>
         </div>
+        <div v-if="order.length == 0">
+            暂无订单
+        </div>
         <order v-for="item in order" :order="item" @clickHandle="toOrderDetail"></order>
         <div v-show="isOver" class="over">
             暂无更多数据...
