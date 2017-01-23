@@ -11,11 +11,12 @@
         </div>
         <com-cell title="说说哪里不满意，帮助商家改进">
             <div slot="body" class="textarea-wrapper">
-                <textarea id=""></textarea>
+                <textarea id="" v-model="remake"></textarea>
             </div>
        </com-cell>
+       <uploader @upload="uploadFunc"></uploader>
        <div class="footer">
-            <button type="button" class="btn">提交</button>
+            <button type="button" class="btn" @click="submitComment">提交</button>
        </div>
     </div>
 </template>
@@ -23,6 +24,7 @@
     import api from '../api/api'
     import comCell from '../components/comCell'
     import rate from '../components/rate'
+    import uploader from '../components/uploader'
 
     export default {
         data() {
@@ -30,12 +32,34 @@
                 dishes: {
 
                 },
-                level: 0
+                level: 0,
+                remake: "",
+                imgs: null
             }
         },
         methods: {
+            uploadFunc(list){
+                this.imgs = list;
+            },
             getStar(index){
                 this.level = index;
+            },
+            submitComment(){
+                if (!this.remake) {
+                    alert("请填写评论");
+                    return;
+                }
+                if (!this.level) {
+                    alert("请选择星级");
+                    return;
+                }
+                const data = {
+                    dishes: this.dishes.id,
+                    remake: this.remake,
+                    level: this.level,
+                    imgs: this.imgs
+                };
+                //post
             }
         },
         beforeRouteEnter: (to, from, next) => {
@@ -47,7 +71,8 @@
         },
         components: {
             comCell,
-            rate
+            rate,
+            uploader
         }
     }
 </script>

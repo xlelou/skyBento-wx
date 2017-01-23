@@ -26,7 +26,7 @@
        </div>
        <com-cell title="请输入退款原因">
             <div slot="body" class="textarea-wrapper">
-                <textarea id=""></textarea>
+                <textarea id="" v-model="comment"></textarea>
             </div>
       </com-cell>
       <div class="submit-wrapper">
@@ -43,7 +43,8 @@
             return {
                 order: {
 
-                }
+                },
+                comment: ""
             }
         },
         beforeRouteEnter: (to, from, next) => {
@@ -59,7 +60,12 @@
         methods: {
             applyRefundFunc(){
                 const orderNo = this.order.orderNo;
-                console.log(orderNo);
+                const comment = this.comment;
+
+                const data = {
+                    orderNo,
+                    comment
+                }
                 alert("退款")
                 //post apply refund;
             }
