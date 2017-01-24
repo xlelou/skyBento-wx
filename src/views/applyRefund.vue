@@ -98,6 +98,7 @@
         background: transparent;
         border: 1px solid #ff8400;
         color: #ff8400;
+        border-radius: 4px;
     }
     .submit-wrapper {
         text-align: center

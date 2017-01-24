@@ -128,5 +128,6 @@
         border: 1px solid #ff8400;
         color: #ff8400;
         background: transparent;
+        border-radius: 4px;
     }
 </style>

@@ -85,6 +85,7 @@
         color: #ff8400;
         background: transparent;
         margin-top: 1rem; 
+        border-radius: 4px;
     }
     .hidden {
         display: none !important;
