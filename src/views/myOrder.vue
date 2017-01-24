@@ -1,10 +1,14 @@
 <template>
     <div class="page-my-order">
-        <div class="header"><span class="icon icon-info"></span>
+        <div class="header" v-if="order.length"><span class="icon icon-info"></span>
             <h5>9点之前可申请退款</h5>
         </div>
-        <div v-if="order.length == 0">
-            暂无订单
+        <div v-if="order.length == 0" class="order-empty">
+           <div>
+               <i class="weui-icon-info weui-icon_msg"></i>
+               <p>亲，您暂时还没有订单哦...</p>
+               <router-link to="list" class="btn">去逛逛</router-link>
+           </div>
         </div>
         <order v-for="item in order" :order="item" @clickHandle="toOrderDetail"></order>
         <div v-show="isOver" class="over">
@@ -30,7 +34,7 @@
         beforeRouteEnter: (to, from, next) => {
             api.getOrder({ t: +new Date }).then(({data}) => {
                 next(vm => {
-                    vm.order = data.data
+                    vm.order = data.data;
                 })
             }).catch(() => {
                 alert("error")
@@ -101,5 +105,22 @@
     }
     .over, .loading {
         text-align: center    
+    }
+    .order-empty {
+        display: flex;
+        justify-content: center
+    }
+    .order-empty > div {
+        text-align: center;
+        margin-top: 15%;
+    }
+    .order-empty i {
+        color: #ff8400;
+    }
+    .order-empty p {
+        margin: 1rem;
+    }
+    .order-empty .btn {
+        color: #ff8400
     }
 </style>
