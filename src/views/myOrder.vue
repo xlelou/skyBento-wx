@@ -4,11 +4,11 @@
             <h5>9点之前可申请退款</h5>
         </div>
         <div v-if="order.length == 0" class="order-empty">
-           <div>
-               <i class="weui-icon-info weui-icon_msg"></i>
-               <p>亲，您暂时还没有订单哦...</p>
-               <router-link to="list" class="btn">去逛逛</router-link>
-           </div>
+            <div>
+                <i class="weui-icon-info weui-icon_msg"></i>
+                <p>亲，您暂时还没有订单哦...</p>
+                <router-link to="list" class="btn">去逛逛</router-link>
+            </div>
         </div>
         <order v-for="item in order" :order="item" @clickHandle="toOrderDetail"></order>
         <div v-show="isOver" class="over">
@@ -43,7 +43,7 @@
         mounted() {
             this.loadMoreData();
         },
-        destroyed(){
+        destroyed() {
             window.onscroll = null;
         },
         methods: {
@@ -55,8 +55,8 @@
             loadMoreData() {
                 let self = this;
                 window.onscroll = function () {
-                     var scrollTop = document.body.scrollTop;
-                     if(scrollTop + window.innerHeight >= document.body.clientHeight  && !self.isOver && !self.isLoading) {
+                    var scrollTop = document.body.scrollTop;
+                    if (scrollTop + window.innerHeight >= document.body.clientHeight && !self.isOver && !self.isLoading) {
                         self.isLoading = true;
                         console.log(self.pageIndex);
                         api.getOrder({ pageIndex: ++self.pageIndex }).then(({data}) => {
@@ -79,6 +79,7 @@
             order
         }
     }
+
 </script>
 <style scoped>
     .page-my-order {
@@ -86,15 +87,18 @@
         background: #1a1b1f;
         color: #fff;
     }
+    
     .header {
         display: flex;
         align-items: center;
         padding-top: .5rem;
         padding-left: .5rem;
     }
+    
     h5 {
         font-weight: normal;
     }
+    
     .icon.icon-info {
         display: inline-block;
         width: 1.25rem;
@@ -103,23 +107,30 @@
         background-size: 100% 100%;
         margin-right: .5rem;
     }
-    .over, .loading {
-        text-align: center    
+    
+    .over,
+    .loading {
+        text-align: center
     }
+    
     .order-empty {
         display: flex;
         justify-content: center
     }
+    
     .order-empty > div {
         text-align: center;
         margin-top: 15%;
     }
+    
     .order-empty i {
         color: #ff8400;
     }
+    
     .order-empty p {
         margin: 1rem;
     }
+    
     .order-empty .btn {
         color: #ff8400
     }

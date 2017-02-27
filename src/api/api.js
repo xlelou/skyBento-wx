@@ -1,101 +1,101 @@
 import axios from 'axios'
 
 export default {
-    getAddress(params, cb){
-        var p = new Promise(function(resolve, reject){
-            axios.get("/getAddress", {method: "get", params}).then(res=>{
+    getAddress(params, cb) {
+        var p = new Promise(function (resolve, reject) {
+            axios.get("/getAddress", { method: "get", params }).then(res => {
                 resolve(res);
-            }).catch((res)=>{
+            }).catch((res) => {
                 reject(res)
             });
         });
         return p;
     },
-    getUserInfo(params, cb){
-        var p = new Promise(function(resolve, reject){
-            axios.get("/getUserInfo", {method: "get", params}).then(res=>{
+    getUserInfo(params, cb) {
+        var p = new Promise(function (resolve, reject) {
+            axios.get("/getUserInfo", { method: "get", params }).then(res => {
                 resolve(res);
-            }).catch((res)=>{
+            }).catch((res) => {
                 reject(res)
             });
         });
         return p;
     },
-    getDishesData(params, cb){
-        var p = new Promise(function(resolve, reject){
-            axios.get("/index/getDishesData", {method: "get", params}).then(res=>{
+    getDishesData(params, cb) {
+        var p = new Promise(function (resolve, reject) {
+            axios.get("/index/getDishesData", { method: "get", params }).then(res => {
                 resolve(res);
-            }).catch((res)=>{
+            }).catch((res) => {
                 reject(res)
             });
         });
         return p;
     },
-    getProductDetail(params, cb){
-        var p = new Promise(function(resolve, reject){
-            axios.get("/detail", {method: "get", params}).then(res=>{
+    getProductDetail(params, cb) {
+        var p = new Promise(function (resolve, reject) {
+            axios.get("/detail", { method: "get", params }).then(res => {
                 resolve(res);
-            }).catch((res)=>{
+            }).catch((res) => {
                 reject(res)
             });
         });
         return p;
     },
-    getDishesTypeData(params, cb){
-        var p = new Promise(function(resolve, reject){
-            axios.get("/index/getDishesTypeData", {method: "get", params}).then(res=>{
+    getDishesTypeData(params, cb) {
+        var p = new Promise(function (resolve, reject) {
+            axios.get("/index/getDishesTypeData", { method: "get", params }).then(res => {
                 resolve(res);
-            }).catch((res)=>{
+            }).catch((res) => {
                 reject(res)
             });
         });
         return p;
     },
-    getComment(params){
-        var p = new Promise(function(resolve, reject){
-            axios.get("/comment", {method: "get", params}).then(res=>{
+    getComment(params) {
+        var p = new Promise(function (resolve, reject) {
+            axios.get("/comment", { method: "get", params }).then(res => {
                 resolve(res);
-            }).catch((res)=>{
+            }).catch((res) => {
                 reject(res)
             });
         });
         return p;
     },
-    getTalkTime(params){
-        var p = new Promise(function(resolve, reject){
-            axios.get("/getTalkTime", {method: "get", params}).then(res=>{
+    getTalkTime(params) {
+        var p = new Promise(function (resolve, reject) {
+            axios.get("/getTalkTime", { method: "get", params }).then(res => {
                 resolve(res);
-            }).catch((res)=>{
+            }).catch((res) => {
                 reject(res)
             });
         });
-        return p; 
+        return p;
     },
-    getOrderDetail(params){
-        var p = new Promise(function(resolve, reject){
-            axios.get("/getOrderDetail", {method: "get", params}).then(res=>{
+    getOrderDetail(params) {
+        var p = new Promise(function (resolve, reject) {
+            axios.get("/getOrderDetail", { method: "get", params }).then(res => {
                 resolve(res);
-            }).catch((res)=>{
+            }).catch((res) => {
                 reject(res)
             });
         });
-        return p; 
+        return p;
     },
     getOrder(params) {
-        var p = new Promise(function(resolve, reject){
-            axios.get("/getOrder", {method: "get", params}).then(res=>{
+        var p = new Promise(function (resolve, reject) {
+            axios.get("/getOrder", { method: "get", params }).then(res => {
                 resolve(res);
-            }).catch((res)=>{
+            }).catch((res) => {
                 reject(res)
             });
         });
         return p;
     },
     getDishesDetail(params) {
-        var p = new Promise(function(resolve, reject){
-            axios.get("/getDishesDetail", {method: "get", params}).then(res=>{
+        var p = new Promise(function (resolve, reject) {
+            axios.get("/getDishesDetail", { method: "get", params }).then(res => {
                 resolve(res);
-            }).catch((res)=>{
+            }).catch((res) => {
                 reject(res)
             });
         });

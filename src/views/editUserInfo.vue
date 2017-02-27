@@ -6,7 +6,7 @@
                 <input type="text" name="name" id="name" v-model="userInfo.name">
             </div>
         </com-cell>
-         <com-cell :border="true" title="联系电话">
+        <com-cell :border="true" title="联系电话">
             <div slot="body">
                 <input type="text" name="tel" id="tel" v-model="userInfo.tel">
             </div>
@@ -30,7 +30,7 @@
 <script>
     import comCell from '../components/comCell'
     export default {
-        data(){
+        data() {
             return {
                 userInfo: {
                     name: "",
@@ -40,7 +40,7 @@
                 }
             }
         },
-        beforeRouteEnter(to, from, next){
+        beforeRouteEnter(to, from, next) {
             next(vm => {
                 const userInfo = JSON.parse(sessionStorage.getItem("userInfo")) || {}
                 const {name, tel, userId, openId} = userInfo;
@@ -53,7 +53,7 @@
             });
         },
         methods: {
-            sumbit(){
+            sumbit() {
                 const {name, tel, userId, openId} = this.userInfo;
                 console.log(name, tel, userId, openId);
                 //to post data
@@ -63,6 +63,7 @@
             comCell
         }
     }
+
 </script>
 <style scoped>
     div.page-edit-user-info {
@@ -72,24 +73,27 @@
         box-sizing: border-box;
         color: #fff;
     }
-   
+    
     input {
         border: none;
         color: #fff;
         background: transparent;
         outline: none;
     }
+    
     button {
         padding: .5rem 2rem;
         border: 1px solid #ff8400;
         color: #ff8400;
         background: transparent;
-        margin-top: 1rem; 
+        margin-top: 1rem;
         border-radius: 4px;
     }
+    
     .hidden {
         display: none !important;
     }
+    
     p {
         color: #999;
         font-size: .95rem;

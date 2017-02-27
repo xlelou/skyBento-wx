@@ -1,4 +1,4 @@
-<template>          
+<template>
     <div class="com-cell" :class="{link: type=='link' ? true : false, border: border }">
         <h5>{{title}}</h5>
         <a href="javascript:;" @click="clickFunc">
@@ -12,7 +12,7 @@
 </template>
 <script>
     export default {
-        data(){
+        data() {
             return {
 
             }
@@ -31,26 +31,30 @@
             }
         },
         methods: {
-            clickFunc(){
+            clickFunc() {
                 this.$emit("clickHandle")
             }
         }
     }
+
 </script>
 <style scoped>
     .com-cell {
         padding: .5rem 1rem .5rem 0;
     }
+    
     .com-cell.border {
         border-bottom: 1px solid #656565;
     }
-    .com-cell a{
+    
+    .com-cell a {
         color: #fff;
         display: flex;
         justify-content: space-between;
         align-items: center;
         position: relative
     }
+    
     .com-cell.link a::after {
         content: "";
         display: inline-block;
@@ -63,6 +67,7 @@
         margin-top: -.75rem;
         top: 50%;
     }
+    
     h5 {
         font-size: 1rem;
         font-weight: normal;

@@ -17,15 +17,15 @@
                     <div class="info">
                         <a href="javascript:;" class="minus" @click="checkOutCart(item)">-</a>
                         <span class="amount">{{item.number}}</span>
-                        <a href="javascript:;" class="add"  @click="checkInCart(item)">+</a>
+                        <a href="javascript:;" class="add" @click="checkInCart(item)">+</a>
                     </div>
                 </div>
             </div>
             <div class="weui-actionsheet__action" style="visibility: hidden">
                 <div class="weui-actionsheet__cell" id="iosActionsheetCancel" @click="hide">取消</div>
             </div>
+        </div>
     </div>
-</div>
 </template>
 <script>
     export default {
@@ -48,40 +48,45 @@
             hide() {
                 this.$emit("hide");
             },
-            checkInCart(e){
+            checkInCart(e) {
                 this.$store.dispatch('checkInCart', e);
             },
-            checkOutCart({id}){
+            checkOutCart({id}) {
                 this.$store.dispatch('checkOutCart', id);
             },
-            clearCart(){
-                 this.$store.dispatch('clearCart');
+            clearCart() {
+                this.$store.dispatch('clearCart');
             }
         }
     }
+
 </script>
 <style scoped>
     .weui-actionsheet__action {
-        margin-top:0
+        margin-top: 0
     }
+    
     .weui-actionsheet__cell:hover,
     .weui-actionsheet__cell:link,
     .weui-actionsheet__cell:active,
     .weui-actionsheet__cell:visited,
     .weui-actionsheet,
     .weui-actionsheet__menu {
-         background:rgba(0,0,0, .4);
+        background: rgba(0, 0, 0, .4);
     }
-     .weui-actionsheet-title h5,
-     .weui-actionsheet-title {
-         font-size: .95rem;
-         background: transparent;
-         font-weight: normal;
-         text-indent: .3rem;
-     }
-     .weui-actionsheet {
-         color: #fff;
-     }
+    
+    .weui-actionsheet-title h5,
+    .weui-actionsheet-title {
+        font-size: .95rem;
+        background: transparent;
+        font-weight: normal;
+        text-indent: .3rem;
+    }
+    
+    .weui-actionsheet {
+        color: #fff;
+    }
+    
     .icon-delete {
         display: inline-block;
         width: 1.25rem;
@@ -89,46 +94,55 @@
         background: url(../assets/icon-delete.png);
         background-size: 100% 100%;
     }
+    
     .weui-actionsheet-title {
         display: flex;
         padding: .25rem;
         justify-content: space-between
     }
+    
     .weui-actionsheet__cell {
         display: flex;
         justify-content: space-between;
         align-items: center
     }
+    
     .weui-actionsheet__cell.empty {
         text-indent: 1rem;
     }
+    
     .weui-actionsheet__cell .product-name {
         width: 45%;
         text-align: left;
         text-indent: .5rem;
         font-weight: normal
     }
-     .weui-actionsheet__cell .cart-price {
-         width: 30%;
-     }
-      .weui-actionsheet__cell .info {
-          width: 25%;
-      }
-      .weui-actionsheet__cell .info .minus,
-      .weui-actionsheet__cell .info .add {
-         display: inline-block;
-         width: 1.25rem;
-         height: 1.25rem;
-         border-radius: 50%;
-         line-height: 1rem;
-         box-sizing: border-box;
-      }
-     .weui-actionsheet__cell .info .minus {
-         border: 1px solid #ff8400;
-         color: #ff8400;
-     }
-     .weui-actionsheet__cell .info .add {
-         background: #ff8400;
-         color: #fff
-     }
+    
+    .weui-actionsheet__cell .cart-price {
+        width: 30%;
+    }
+    
+    .weui-actionsheet__cell .info {
+        width: 25%;
+    }
+    
+    .weui-actionsheet__cell .info .minus,
+    .weui-actionsheet__cell .info .add {
+        display: inline-block;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        line-height: 1rem;
+        box-sizing: border-box;
+    }
+    
+    .weui-actionsheet__cell .info .minus {
+        border: 1px solid #ff8400;
+        color: #ff8400;
+    }
+    
+    .weui-actionsheet__cell .info .add {
+        background: #ff8400;
+        color: #fff
+    }
 </style>

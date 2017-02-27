@@ -19,24 +19,24 @@
 <script>
     import api from '../api/api'
     export default {
-        data(){
+        data() {
             return {
                 addressList: []
             }
         },
-        beforeRouteEnter (to, from, next) {
-            api.getAddress({t: +new Date}).then((res)=>{
-                 next(vm => {
+        beforeRouteEnter(to, from, next) {
+            api.getAddress({ t: +new Date }).then((res) => {
+                next(vm => {
                     vm.addressList = res.data.data
-                 });
+                });
             }).catch(() => {
                 alert("error")
             });
         },
         methods: {
-            confirmAddress({id, name, detail}){
+            confirmAddress({id, name, detail}) {
                 var address = JSON.parse(sessionStorage.getItem("address")) || {};
-                address = Object.assign({}, {addressId: id, addrName: name, addrDetail: detail});
+                address = Object.assign({}, { addressId: id, addrName: name, addrDetail: detail });
 
                 sessionStorage.setItem("address", JSON.stringify(address));
                 this.$router.push({
@@ -45,11 +45,13 @@
             }
         }
     }
+
 </script>
 <style scoped>
     .hidden {
         display: none;
     }
+    
     .page-address {
         min-height: 100vh;
         background: #1a1b20;
@@ -57,16 +59,19 @@
         padding: .5rem;
         box-sizing: border-box
     }
+    
     .ship-point {
         display: flex;
         align-items: center
     }
+    
     .ship-point div {
         flex: 1;
         border-bottom: 1px solid #656565;
         margin-left: 1rem;
         position: relative
     }
+    
     .ship-point div::after {
         content: "";
         display: inline-block;
@@ -77,12 +82,14 @@
         position: absolute;
         right: 0
     }
+    
     h5 {
         color: #999;
         font-weight: normal;
         font-size: 1rem;
         margin: .5rem 0
     }
+    
     input {
         background: transparent;
         border: none;
@@ -90,16 +97,19 @@
         color: #fff;
         width: 100%;
     }
+    
     ul {
         width: 80%;
         float: right;
         list-style-type: none;
     }
+    
     ul li {
         border-bottom: 1px solid #656565;
         padding-bottom: .25rem;
         margin: .25rem 0
     }
+    
     ul li p:last-child {
         color: #666;
     }

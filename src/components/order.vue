@@ -62,34 +62,36 @@
             }
         },
         methods: {
-            clickFunc(){
+            clickFunc() {
                 this.$emit("clickHandle", this.order.orderNo);
             },
-            cancelOrder(){
+            cancelOrder() {
                 alert(this.order.orderNo + "取消订单");
                 //post request
             },
-            payOrder(){
+            payOrder() {
                 alert(this.order.orderNo + "支付");
                 //post request;
             },
-            applyRefund(){
+            applyRefund() {
                 this.$router.push({
                     path: `/applyRefund/${this.order.orderNo}`
                 })
             },
-            comment(){
+            comment() {
                 this.$router.push({
                     path: `/comment/${this.order.orderNo}`
                 })
             }
         }
     }
+
 </script>
 <style scoped>
     .com-order {
         margin: .5rem 0 1rem 0;
     }
+    
     h5 {
         font-weight: normal;
         font-size: .9rem;
@@ -98,6 +100,7 @@
         align-items: center;
         justify-content: space-between;
     }
+    
     .icon.icon-time {
         display: inline-block;
         width: 1.2rem;
@@ -106,34 +109,42 @@
         background-size: 100%;
         margin: 0 .5rem;
     }
+    
     .reserver-time {
         flex: 1;
     }
+    
     ul {
         padding: 0 .5rem;
         border-bottom: 1px solid #656565
     }
+    
     ul li {
         margin: .5rem;
         display: flex;
         justify-content: space-between
     }
+    
     ul li span:first-child {
-         flex: 2;
-     }
+        flex: 2;
+    }
+    
     ul li span {
         flex: 1;
     }
+    
     .total {
         display: flex;
         justify-content: flex-end;
         margin: .5rem;
         font-size: .9rem;
     }
+    
     .footer {
         display: flex;
         justify-content: flex-end;
     }
+    
     button {
         padding: .25rem .5rem;
         background: transparent;

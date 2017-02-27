@@ -24,7 +24,7 @@
             <comment :id="id" v-if="isProductDetail === 'comment' ? true : false "></comment>
         </transition>
         <com-footer @submit="submitOrder" @showCart="show = true">
-           <p slot="submit-order-slot">提交订单</p>
+            <p slot="submit-order-slot">提交订单</p>
         </com-footer>
         <cart :show="show" :dataSource="dataSource" @hide="show = false"></cart>
     </div>
@@ -37,7 +37,7 @@
     import api from '../api/api'
 
     export default {
-        data(){
+        data() {
             return {
                 product: {
 
@@ -49,29 +49,29 @@
             }
         },
         computed: {
-            dataSource(){
-               return this.$store.getters.getProducts
+            dataSource() {
+                return this.$store.getters.getProducts
             }
         },
-        beforeRouteEnter(to, from, next){
-            api.getDishesData({id: to.params.id}).then((res)=>{
-                 next(vm => {
+        beforeRouteEnter(to, from, next) {
+            api.getDishesData({ id: to.params.id }).then((res) => {
+                next(vm => {
                     vm.product = res.data.data[0];
                 })
-            }).catch(()=>{
+            }).catch(() => {
                 alert("error")
             });
         },
         methods: {
-             submitOrder(){
-                 this.$router.push({
+            submitOrder() {
+                this.$router.push({
                     path: "/payOrder"
-                  });
+                });
             },
-            checkInCart(){
+            checkInCart() {
                 this.active = true;
 
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.active = false;
                 }, 400);
 
@@ -85,12 +85,14 @@
             comment
         }
     }
+
 </script>
 <style scoped>
     .header {
         height: 14rem;
         position: relative
     }
+    
     .header > img {
         position: absolute;
         top: 0;
@@ -98,9 +100,10 @@
         width: 100%;
         height: 100%;
     }
+    
     .header > div {
         position: absolute;
-        background: rgba(0,0,0,.4);
+        background: rgba(0, 0, 0, .4);
         z-index: 2;
         width: 100%;
         bottom: 0;
@@ -108,13 +111,16 @@
         box-sizing: border-box;
         padding: .5rem 1rem;
     }
+    
     .header > div h5 {
-         font-size: 1rem;
-     }
-    .header > div p {
-        font-size: .85rem;       
+        font-size: 1rem;
     }
-      .add-to-cart{
+    
+    .header > div p {
+        font-size: .85rem;
+    }
+    
+    .add-to-cart {
         display: inline-block;
         width: 2rem;
         height: 2rem;
@@ -124,30 +130,39 @@
         right: 3rem;
         top: 1rem;
     }
+    
     .add-to-cart.active {
         background: url(../assets/icon-cart-active.png) no-repeat;
         background-size: 100%
     }
+    
     .tab {
         display: flex;
         list-style-type: none;
         background: #ff8400;
         padding: .5rem 1rem;
     }
+    
     .tab li {
         width: 50%;
         text-align: center
     }
+    
     .tab li:first-child {
-          border-right: 1px solid #fff
+        border-right: 1px solid #fff
     }
+    
     .tab li.active {
         color: #fff;
     }
-    .component-fade-enter-active, .component-fade-leave-active {
+    
+    .component-fade-enter-active,
+    .component-fade-leave-active {
         transition: opacity .2s ease;
     }
-    .component-fade-enter, .component-fade-leave-active {
+    
+    .component-fade-enter,
+    .component-fade-leave-active {
         opacity: 0;
     }
 </style>

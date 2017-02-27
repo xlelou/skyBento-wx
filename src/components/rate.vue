@@ -5,7 +5,7 @@
 </template>
 <script>
     export default {
-        data(){
+        data() {
             return {
                 childStar: this.star
             }
@@ -21,12 +21,13 @@
             },
         },
         methods: {
-            selectStar(index){
+            selectStar(index) {
                 this.childStar = index + 1;
                 this.$emit("confirm", this.childStar);
             }
         }
     }
+
 </script>
 <style scoped>
     div {
@@ -34,6 +35,7 @@
         margin: 1rem 0;
         justify-content: center
     }
+    
     span {
         display: inline-block;
         margin: 0 .5rem;
@@ -42,7 +44,8 @@
         background: url(../assets/icon-ustar.png) no-repeat center;
         background-size: 100%;
     }
-     span.active {
+    
+    span.active {
         background: url(../assets/icon-star.png) no-repeat center;
         background-size: 100%;
     }

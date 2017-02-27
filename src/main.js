@@ -12,9 +12,9 @@ Vue.use(Validator);
 Vue.use(vueRouter);
 
 const router = new vueRouter({
-    mode: "history",
-    routes
-  })
+  mode: "history",
+  routes
+})
 
 new Vue({
   el: '#app',

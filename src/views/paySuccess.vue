@@ -13,18 +13,19 @@
             <router-link to="/list" class="btn">继续预订</router-link>
         </div>
     </div>
-</div>
+    </div>
 </template>
 <script>
     export default {
-        data(){
+        data() {
             return {
 
             }
         }
     }
+
 </script>
-<style scoped> 
+<style scoped>
     .page {
         background: #1a1b1f;
         color: #fff;
@@ -32,30 +33,36 @@
         box-sizing: border-box;
         padding: 2rem;
     }
+    
     .icon-box {
         display: flex;
         align-items: center;
         justify-content: center;
         margin-top: 5rem;
     }
+    
     h3 {
         font-weight: normal;
         color: #ff8400
     }
+    
     .weui-icon_msg {
         font-size: 50px;
         color: #ff8400;
         margin-right: 1rem;
     }
+    
     .tip {
         margin: 1rem;
         text-align: center;
         color: #999
     }
+    
     .footer {
         display: flex;
         justify-content: space-between
     }
+    
     .btn {
         background: transparent;
         border: 1px solid #ff8400;
@@ -66,7 +73,8 @@
         border-radius: 4px;
         text-align: center
     }
-    .btn:last-child{
+    
+    .btn:last-child {
         background: #ff8400;
         color: #fff
     }

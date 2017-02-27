@@ -19,13 +19,13 @@
             }
         },
         mounted() {
-            api.getDishesTypeData(null).then((res)=>{
+            api.getDishesTypeData(null).then((res) => {
                 this.getDishesTypeData = res.data.data;
-               
-                this.$nextTick(()=>{
+
+                this.$nextTick(() => {
                     this.$emit("load");
                 });
-            }).catch((res)=>{
+            }).catch((res) => {
                 alert("error");
             });
         },
@@ -36,6 +36,7 @@
             }
         }
     }
+
 </script>
 <style scoped>
     .menu-wrapper {
@@ -48,20 +49,24 @@
         background-size: 100% 100%;
         color: #fff;
     }
+    
     .menu-wrapper ul {
         list-style-type: none;
         width: 60%;
         float: right;
         text-align: left;
     }
+    
     .menu-wrapper ul li {
         padding: .2rem
     }
+    
     .menu-wrapper ul li.active {
         border-bottom: 1px solid #fff;
         display: inline-block;
         position: relative;
     }
+    
     .menu-wrapper ul li.active::before {
         content: "";
         display: inline-block;

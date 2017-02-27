@@ -6,7 +6,7 @@
                     <span class="total" v-if="total >= 1 ? true : false">{{total}}</span>
                 </transition>
             </div>
-           
+
             <div class="submit" id="submit-order" @click="submitFunc">
                 <slot name="submit-order-slot">
                     下单
@@ -25,7 +25,7 @@
     export default {
         data() {
             return {
-            
+
             }
         },
         props: {
@@ -34,11 +34,11 @@
                 default: "submit-order", //submit-order || pay-order
             }
         },
-        computed:{
+        computed: {
             total: function () {
                 return this.$store.getters.getProductTotalNumber;
             },
-            price(){
+            price() {
                 return this.$store.getters.getProductTotalPrice;
             }
         },
@@ -51,23 +51,28 @@
             },
         }
     }
+
 </script>
 
 <style scoped>
     .footer.pay-order {
         padding: 0
     }
-     .footer.pay-order div {
-         padding: .5rem;
-         text-align: center
-     }
-    .footer.pay-order div:first-child{
+    
+    .footer.pay-order div {
+        padding: .5rem;
+        text-align: center
+    }
+    
+    .footer.pay-order div:first-child {
         width: 55%;
     }
-    .footer.pay-order div:last-child{
+    
+    .footer.pay-order div:last-child {
         width: 45%;
         background: #ff8400;
     }
+    
     .footer {
         position: fixed;
         left: 0;
@@ -81,7 +86,7 @@
         padding: .5rem 1rem;
         align-items: center;
     }
-
+    
     .footer .cart {
         width: 2rem;
         height: 2rem;
@@ -89,7 +94,8 @@
         background-size: 100% 100%;
         position: relative
     }
-    .cart::after{
+    
+    .cart::after {
         content: "";
         position: absolute;
         height: 100%;
@@ -97,6 +103,7 @@
         background: #ff8400;
         right: -1rem
     }
+    
     .footer .submit {
         width: 80%;
         width: calc(100% - 4rem);
@@ -104,6 +111,7 @@
         text-align: center;
         color: #fff;
     }
+    
     .footer .total {
         display: inline-block;
         width: 1.25rem;

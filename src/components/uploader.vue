@@ -16,21 +16,21 @@
 </template>
 <script>
     export default {
-        data(){
+        data() {
             return {
                 imgList: [],
                 fd: new FormData()
             }
         },
         methods: {
-            uploadFunc(e){
+            uploadFunc(e) {
                 this.imgList = [];
                 this.fd = new FormData();
-                
+
                 var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
                 for (var i = 0, len = files.length; i < len; ++i) {
                     var file = files[i];
-                    
+
                     if (url) {
                         src = url.createObjectURL(file);
                     } else {
@@ -42,30 +42,35 @@
                     this.$emit("upload", this.fd);
                 }
             },
-            remove(index){
+            remove(index) {
                 this.imgList.splice(index, 1);
                 this.fd.delete("key" + index);
                 this.$emit("upload", this.fd);
             },
         }
     }
+
 </script>
 <style>
     .weui-uploader__bd {
         overflow: visible
     }
+    
     .weui-uploader__input-box {
         background: url(../assets/icon-addImage.png);
         background-size: 100%;
         border: none;
     }
+    
     .weui-uploader__input-box::before,
     .weui-uploader__input-box::after {
         display: none;
     }
+    
     #uploaderFiles li {
         position: relative;
     }
+    
     .remove {
         display: inline-block;
         width: 1.2rem;

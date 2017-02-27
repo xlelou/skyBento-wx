@@ -5,7 +5,9 @@
         </h5>
         <ul>
             <li v-for="item in order.orderItems">
-                <span>{{item.dishesName}}</span> <span>x{{item.number}}</span> <span>￥{{item.price}}</span><button type="button" class="btn" @click="goComment(item.id)">去评价</button>
+                <span>{{item.dishesName}}</span> <span>x{{item.number}}</span> <span>￥{{item.price}}</span>
+                <button type="button"
+                    class="btn" @click="goComment(item.id)">去评价</button>
             </li>
         </ul>
         <div class="total">
@@ -70,15 +72,17 @@
             }
         }
     }
+
 </script>
 <style scoped>
-     .page-comment {
-         background: #1a1b1f;
-         color: #fff;
-         min-height: 100vh;
-         box-sizing: border-box;
-         padding-top: .6rem;
+    .page-comment {
+        background: #1a1b1f;
+        color: #fff;
+        min-height: 100vh;
+        box-sizing: border-box;
+        padding-top: .6rem;
     }
+    
     h5 {
         font-weight: normal;
         font-size: .9rem;
@@ -87,6 +91,7 @@
         align-items: center;
         justify-content: space-between;
     }
+    
     .icon.icon-time {
         display: inline-block;
         width: 1.2rem;
@@ -95,30 +100,37 @@
         background-size: 100%;
         margin: 0 .5rem;
     }
+    
     .reserver-time {
         flex: 1;
     }
+    
     ul {
         padding: 0 .5rem;
         border-bottom: 1px solid #656565
     }
+    
     ul li {
         margin: .5rem;
         display: flex;
         justify-content: space-between
     }
+    
     ul li span:first-child {
-         flex: 2;
-     }
+        flex: 2;
+    }
+    
     ul li span {
         flex: 1;
     }
+    
     .total {
         display: flex;
         justify-content: flex-end;
         margin: .5rem;
         font-size: .9rem;
     }
+    
     .btn {
         background: transparent;
         border: 1px solid #ff8400;

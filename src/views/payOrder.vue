@@ -9,8 +9,8 @@
                     +添加
                 </div>
                 <div v-if="userInfo">
-                  <span>{{userInfo.name}}</span>
-                  <span>{{userInfo.tel}}</span>
+                    <span>{{userInfo.name}}</span>
+                    <span>{{userInfo.tel}}</span>
                 </div>
             </div>
         </com-cell>
@@ -78,7 +78,7 @@
     import comCell from '../components/comCell'
     import comFooter from '../components/comFooter'
     import api from '../api/api'
-   
+
     export default {
         data() {
             return {
@@ -99,31 +99,31 @@
                 return this.$store.getters.getProductTotalPrice
             }
         },
-        beforeRouteEnter(to, from, next){
-            api.getUserInfo({t: +new Date}).then((res)=>{
-                 next(vm => {
+        beforeRouteEnter(to, from, next) {
+            api.getUserInfo({ t: +new Date }).then((res) => {
+                next(vm => {
                     const data = res.data.data;
                     sessionStorage.setItem("userInfo", JSON.stringify(data));
 
                     vm.userInfo = data;
                     vm.address = JSON.parse(sessionStorage.getItem("address")) || {};
                 });
-            }).catch(()=>{
+            }).catch(() => {
                 alert("error")
             });
         },
         methods: {
-            editUserInfo(){
+            editUserInfo() {
                 this.$router.push({
                     path: "/userInfo"
                 })
             },
-            addAddress(){
+            addAddress() {
                 this.$router.push({
                     path: "/address"
                 })
             },
-            submitHandle(){
+            submitHandle() {
                 var orderItems = [],
                     products = this.products,
                     userInfo = JSON.parse(sessionStorage.getItem("userInfo")) || {},
@@ -172,23 +172,23 @@
                 })
             },
             showTimePicker() {
-                 var self = this;
-                 api.getTalkTime({t: +new Date()}).then(res=>{
-                     var data = res.data.data;
-                   
-                    data.daylist = data.daylist.map(function(item){
+                var self = this;
+                api.getTalkTime({ t: +new Date() }).then(res => {
+                    var data = res.data.data;
+
+                    data.daylist = data.daylist.map(function (item) {
                         return {
                             id: item.id,
                             value: (new Date(item.day)).toLocaleDateString()
                         }
                     });
-                    data.selectTime = data.selectTime.map(function(item) {
+                    data.selectTime = data.selectTime.map(function (item) {
                         return {
                             id: item.id,
                             value: item.startTime + "-" + item.endTime
                         }
                     });
-                   
+
                     new iosSelect(2,
                         [data.daylist, data.selectTime],
                         {
@@ -204,9 +204,9 @@
                                 };
                             }
                         });
-                 }).catch(()=>{
-                     alert("error");
-                 })
+                }).catch(() => {
+                    alert("error");
+                })
             }
         },
         components: {
@@ -214,56 +214,67 @@
             comFooter,
         }
     }
+
 </script>
 <style scoped>
     .product-list .com-cell:last-child {
         border-bottom: 1px solid #656565
     }
+    
     .active {
         color: #ff8400;
     }
+    
     .tip {
         color: #999;
         display: flex;
     }
+    
     .pay-way {
         display: flex;
         align-items: center
     }
-     .icon.icon-tip,
-    .icon.icon-selected{
+    
+    .icon.icon-tip,
+    .icon.icon-selected {
         width: 1.5rem;
         height: 1.5rem;
         display: inline-block;
     }
+    
     .icon.icon-tip {
         background: url(../assets/icon-tip.png);
         background-size: 100%;
     }
+    
     .icon.icon-selected {
         background: url(../assets/icon-selected.png);
         background-size: 100%;
     }
-   .pay-order {
-       padding: .5rem;
-       min-height: calc(100vh - 3rem);
-       background: #1a1b1f;
-       color: #fff;
-   }
-   .product-item {
-       display: flex;
-       width: 100%;
-       justify-content: space-between
-   }
-   input {
-       color: #fff;
-       border: none;
-       background: transparent;
-       outline: none;
-   }
- .total {
-     display: flex;
-     justify-content: flex-end;
-     margin: .3rem .8rem;
- }
+    
+    .pay-order {
+        padding: .5rem;
+        min-height: calc(100vh - 3rem);
+        background: #1a1b1f;
+        color: #fff;
+    }
+    
+    .product-item {
+        display: flex;
+        width: 100%;
+        justify-content: space-between
+    }
+    
+    input {
+        color: #fff;
+        border: none;
+        background: transparent;
+        outline: none;
+    }
+    
+    .total {
+        display: flex;
+        justify-content: flex-end;
+        margin: .3rem .8rem;
+    }
 </style>

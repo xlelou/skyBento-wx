@@ -46,54 +46,57 @@
             }
         },
         mounted() {
-            api.getComment({id: this.id}).then( res=> {
+            api.getComment({ id: this.id }).then(res => {
                 this.commentList = res.data.data.list;
-            }).catch((res)=>{
+            }).catch((res) => {
                 alert("error");
             });
             this.loadMoreData();
         },
-        destroyed(){
+        destroyed() {
             window.onscroll = null;
         },
         methods: {
-            loadMoreData(){
+            loadMoreData() {
                 let self = this;
-                window.onscroll = function(){
+                window.onscroll = function () {
                     var scrollTop = document.body.scrollTop;
-                    if(scrollTop + window.innerHeight >= document.body.clientHeight  && !self.isOver && !self.isLoading) {
+                    if (scrollTop + window.innerHeight >= document.body.clientHeight && !self.isOver && !self.isLoading) {
                         self.isLoading = true;
                         console.log(self.pageIndex);
-                        api.getComment({id: this.id, pageIndex: ++self.pageIndex}).then(({data})=> {
-                                const result = data.data.list;
-                                self.isLoading = false;
-                                if (!result.length || self.pageIndex > 5) {
-                                    self.isOver = true;
-                                    window.onscroll = null;
-                                    return;
-                                }
-                                self.commentList.push(...result);
-                            }).catch((res)=>{
-                                alert("error");
-                            });
-                　　}
+                        api.getComment({ id: this.id, pageIndex: ++self.pageIndex }).then(({data}) => {
+                            const result = data.data.list;
+                            self.isLoading = false;
+                            if (!result.length || self.pageIndex > 5) {
+                                self.isOver = true;
+                                window.onscroll = null;
+                                return;
+                            }
+                            self.commentList.push(...result);
+                        }).catch((res) => {
+                            alert("error");
+                        });
+                    }
                 }
             }
         },
-        
+
     }
+
 </script>
 <style scoped>
-    .avatar img{
+    .avatar img {
         width: 2.5rem;
         height: 2.5rem;
         display: inline-block;
         border: 1px solid #fff;
         border-radius: 50%;
     }
+    
     ul {
         padding-bottom: 3rem;
     }
+    
     ul li {
         display: -webkit-box;
         display: -webkit-flex;
@@ -104,17 +107,19 @@
         background: #1b1a1f;
         color: #fff;
     }
-
+    
     ul li .user-info {
         width: 80%;
         width: calc(100% - 3.5rem);
         width: -webkit-calc(100% -3rem);
         padding-left: .5rem;
     }
+    
     ul li .desc {
         margin: 5px
     }
-    ul li .details-img img{
+    
+    ul li .details-img img {
         width: 30%;
         height: 5rem;
         display: block;
@@ -123,19 +128,23 @@
         margin: 3px;
         float: left;
     }
-    .iconfont.icon-wuxing.active  {
+    
+    .iconfont.icon-wuxing.active {
         background: url("../assets/icon-star.png");
         background-size: 100% 100%;
     }
+    
     .iconfont.icon-wuxing {
         display: inline-block;
         width: 1rem;
         height: 1rem;
         margin: 0 .1rem;
     }
+    
     .time {
         float: right
     }
+    
     .over,
     .loading {
         text-align: center;
