@@ -3,11 +3,21 @@ var webpack = require('webpack')
 var precss = require('precss')
 var autoprefixer = require('autoprefixer')
 
+//发布到项目根目录，publicPath路径不同
+var config = {
+  dev: {
+    publicPath: "/dist/"
+  },
+  build: {
+    publicPath: './dist/'
+  }
+};
+
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: process.env.NODE_ENV === 'production' ? config.build.publicPath : config.dev.publicPath,
     filename: 'build.js'
   },
   module: {

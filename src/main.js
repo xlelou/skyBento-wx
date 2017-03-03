@@ -12,7 +12,6 @@ Vue.use(Validator);
 Vue.use(vueRouter);
 
 const router = new vueRouter({
-  mode: "history",
   routes
 })
 
