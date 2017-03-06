@@ -54,9 +54,9 @@
             }
         },
         beforeRouteEnter(to, from, next) {
-            api.getDishesData({ id: to.params.id }).then((res) => {
+            api.getDishesData({ id: to.params.id }).then(({data}) => {
                 next(vm => {
-                    vm.product = res.data.data[0];
+                    vm.product = data.data[0];
                 })
             }).catch(() => {
                 alert("error")
@@ -87,73 +87,67 @@
     }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
     .header {
         height: 14rem;
-        position: relative
+        position: relative;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        div {
+            position: absolute;
+            background: rgba(0, 0, 0, .4);
+            z-index: 2;
+            width: 100%;
+            bottom: 0;
+            color: #fff;
+            box-sizing: border-box;
+            padding: .5rem 1rem;
+
+            h5 {
+                font-size: 1rem;
+            }
+            p {
+                font-size: .85rem;
+            }
+            .add-to-cart {
+                display: inline-block;
+                width: 2rem;
+                height: 2rem;
+                background: url(../assets/icon-cart.png) no-repeat;
+                background-size: 100%;
+                position: absolute;
+                right: 3rem;
+                top: 1rem;
+
+                &.active {
+                    background: url(../assets/icon-cart-active.png) no-repeat;
+                    background-size: 100%
+                }
+            }
+        }
     }
-    
-    .header > img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-    
-    .header > div {
-        position: absolute;
-        background: rgba(0, 0, 0, .4);
-        z-index: 2;
-        width: 100%;
-        bottom: 0;
-        color: #fff;
-        box-sizing: border-box;
-        padding: .5rem 1rem;
-    }
-    
-    .header > div h5 {
-        font-size: 1rem;
-    }
-    
-    .header > div p {
-        font-size: .85rem;
-    }
-    
-    .add-to-cart {
-        display: inline-block;
-        width: 2rem;
-        height: 2rem;
-        background: url(../assets/icon-cart.png) no-repeat;
-        background-size: 100%;
-        position: absolute;
-        right: 3rem;
-        top: 1rem;
-    }
-    
-    .add-to-cart.active {
-        background: url(../assets/icon-cart-active.png) no-repeat;
-        background-size: 100%
-    }
-    
     .tab {
         display: flex;
         list-style-type: none;
         background: #ff8400;
         padding: .5rem 1rem;
-    }
-    
-    .tab li {
-        width: 50%;
-        text-align: center
-    }
-    
-    .tab li:first-child {
-        border-right: 1px solid #fff
-    }
-    
-    .tab li.active {
-        color: #fff;
+
+        li {
+            width: 50%;
+            text-align: center;
+            &:first-child {
+                border-right: 1px solid #fff
+            }
+            &.active {
+                color: #fff;
+            }
+        }
     }
     
     .component-fade-enter-active,

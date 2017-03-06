@@ -123,14 +123,10 @@
         margin-top: 15%;
     }
     
-    .order-empty i {
-        color: #ff8400;
-    }
-    
     .order-empty p {
         margin: 1rem;
     }
-    
+    .order-empty i,
     .order-empty .btn {
         color: #ff8400
     }

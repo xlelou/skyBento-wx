@@ -80,9 +80,8 @@
     }
 
 </script>
-<style scoped>
-    .prev,
-    .next {
+<style scoped lang="scss">
+    @mixin btnStyle($url) {
         display: inline-block;
         width: 2rem;
         height: 2rem;
@@ -93,21 +92,21 @@
         border: none;
         animation: show 1s infinite ease-in-out;
         -webkit-animation: show 1s infinite ease-in-out;
+        background: url($url);
+        background-size: 100% 100%;
     }
     
     .prev {
         top: 1rem;
-        background: url(../assets/prev.png);
-        background-size: 100% 100%;
+        @include btnStyle("../assets/prev.png");
     }
     
     .next {
-        background: url(../assets/next.png);
-        background-size: 100% 100%;
+        @include btnStyle("../assets/next.png");
         bottom: 4rem;
     }
     
-    @keyframes show {
+    @mixin btnAnimate (){
         from {
             transform: scale(.8);
             -webkit-transform: scale(.8);
@@ -119,20 +118,13 @@
             opacity: 1;
         }
     }
+
+    @keyframes show {
+        @include btnAnimate();
+    }
     
     @-webkit-keyframes show
-    /*Safari and Chrome*/
-    
     {
-        from {
-            transform: scale(.8);
-            -webkit-transform: scale(.8);
-            opacity: 0;
-        }
-        to {
-            transform: scale(1);
-            -webkit-transform: scale(1);
-            opacity: 1;
-        }
+        @include btnAnimate();
     }
 </style>

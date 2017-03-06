@@ -74,68 +74,65 @@
     }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
     .page-comment {
         background: #1a1b1f;
         color: #fff;
         min-height: 100vh;
         box-sizing: border-box;
         padding-top: .6rem;
-    }
-    
-    h5 {
-        font-weight: normal;
-        font-size: .9rem;
-        background: #26262d;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    
-    .icon.icon-time {
-        display: inline-block;
-        width: 1.2rem;
-        height: 1.2rem;
-        background: url(../assets/icon-wait.png) no-repeat;
-        background-size: 100%;
-        margin: 0 .5rem;
-    }
-    
-    .reserver-time {
-        flex: 1;
-    }
-    
-    ul {
-        padding: 0 .5rem;
-        border-bottom: 1px solid #656565
-    }
-    
-    ul li {
-        margin: .5rem;
-        display: flex;
-        justify-content: space-between
-    }
-    
-    ul li span:first-child {
-        flex: 2;
-    }
-    
-    ul li span {
-        flex: 1;
-    }
-    
-    .total {
-        display: flex;
-        justify-content: flex-end;
-        margin: .5rem;
-        font-size: .9rem;
-    }
-    
-    .btn {
-        background: transparent;
-        border: 1px solid #ff8400;
-        color: #ff8400;
-        border-radius: 3px;
-        padding: .25rem .5rem;
+
+        h5 {
+            font-weight: normal;
+            font-size: .9rem;
+            background: #26262d;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .icon.icon-time {
+                display: inline-block;
+                width: 1.2rem;
+                height: 1.2rem;
+                background: url(../assets/icon-wait.png) no-repeat;
+                background-size: 100%;
+                margin: 0 .5rem;
+            }
+
+             .reserver-time {
+                flex: 1;
+            }
+        }
+
+         ul {
+            padding: 0 .5rem;
+            border-bottom: 1px solid #656565;
+            li {
+                margin: .5rem;
+                display: flex;
+                justify-content: space-between;
+
+                .btn {
+                    background: transparent;
+                    border: 1px solid #ff8400;
+                    color: #ff8400;
+                    border-radius: 3px;
+                    padding: .25rem .5rem;
+                }
+
+               span {
+                    flex: 1;
+                }
+                span:first-child {
+                    flex: 2;
+                }
+            }
+        }
+        .total {
+            display: flex;
+            justify-content: flex-end;
+            margin: .5rem;
+            font-size: .9rem;
+        }
     }
 </style>

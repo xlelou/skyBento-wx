@@ -216,7 +216,11 @@
     }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
+    @mixin bg($url) {
+        background: url($url);
+        background-size: 100%;
+    }
     .product-list .com-cell:last-child {
         border-bottom: 1px solid #656565
     }
@@ -243,13 +247,11 @@
     }
     
     .icon.icon-tip {
-        background: url(../assets/icon-tip.png);
-        background-size: 100%;
+        @include bg("../assets/icon-tip.png")
     }
     
     .icon.icon-selected {
-        background: url(../assets/icon-selected.png);
-        background-size: 100%;
+        @include bg("../assets/icon-selected.png")
     }
     
     .pay-order {
