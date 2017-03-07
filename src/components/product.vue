@@ -48,7 +48,11 @@
     }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
+    @mixin bgImage($url) {
+        background: url($url) no-repeat;
+        background-size: 100%;
+    }
     .product-container {
         width: 100%;
         height: 100%;
@@ -60,6 +64,36 @@
         top: 30%;
         width: 60%;
         margin-left: 1rem;
+
+        .product-desc {
+            font-size: .9rem;
+            list-style-type: square;
+            margin-left: 1rem;
+        }
+        p {
+            margin: .25rem 0
+        }
+        .product-name {
+            font-size: 1.7rem;
+            color: #6a1109;
+            display: flex;
+            display: -webkit-box;
+            display: -webkit-flex;
+            align-items: flex-end;
+            -webkit-box-align: flex-end;
+            /*提供继承*/
+            .public {
+                border-bottom: 2px solid #6a1109;
+                padding-bottom: .25rem;
+            }
+            span {
+                @extend .public;
+            }
+             h5 {
+                padding-right: .2rem;
+                @extend .public;
+            }
+        }
     }
     
     .hidden {
@@ -70,49 +104,17 @@
         display: inline-block;
         width: 2rem;
         height: 2rem;
-        background: url(../assets/icon-cart.png) no-repeat;
-        background-size: 100%
-    }
-    
-    .add-to-cart.active {
-        background: url(../assets/icon-cart-active.png) no-repeat;
-        background-size: 100%
-    }
-    
-    .product-item .product-name {
-        font-size: 1.7rem;
-        color: #6a1109;
-        display: flex;
-        display: -webkit-box;
-        display: -webkit-flex;
-        align-items: flex-end;
-        -webkit-box-align: flex-end;
-    }
-    
-    .product-item .product-name h5 {
-        padding-right: .2rem
-    }
-    
-    .product-item .product-name h5,
-    .product-item .product-name span {
-        border-bottom: 2px solid #6a1109;
-        padding-bottom: .25rem;
-    }
-    
-    .product-item p {
-        margin: .25rem 0
+        
+        @include bgImage("../assets/icon-cart.png");
+        &.active {
+            @include bgImage("../assets/icon-cart-active.png");
+        }
     }
     
     img.new-type {
         width: 9rem;
         height: 9rem;
         margin-top: .5rem;
-    }
-    
-    .product-item .product-desc {
-        font-size: .9rem;
-        list-style-type: square;
-        margin-left: 1rem;
     }
     
     .product-price span {

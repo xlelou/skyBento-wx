@@ -38,34 +38,31 @@
     }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
     .com-cell {
         padding: .5rem 1rem .5rem 0;
-    }
-    
-    .com-cell.border {
-        border-bottom: 1px solid #656565;
-    }
-    
-    .com-cell a {
-        color: #fff;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative
-    }
-    
-    .com-cell.link a::after {
-        content: "";
-        display: inline-block;
-        width: 1.5rem;
-        height: 1.5rem;
-        background: url(../assets/icon-left-arrow.png) no-repeat;
-        background-size: 100%;
-        position: absolute;
-        right: -1.2rem;
-        margin-top: -.75rem;
-        top: 50%;
+        &.border {
+            border-bottom: 1px solid #656565;
+        }
+        &.link a::after {
+            content: "";
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: url(../assets/icon-left-arrow.png) no-repeat;
+            background-size: 100%;
+            position: absolute;
+            right: -1.2rem;
+            margin-top: -.75rem;
+            top: 50%;
+        }
+        a {
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative
+        }
     }
     
     h5 {

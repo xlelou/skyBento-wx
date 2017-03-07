@@ -84,7 +84,7 @@
     }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
     .avatar img {
         width: 2.5rem;
         height: 2.5rem;
@@ -95,50 +95,47 @@
     
     ul {
         padding-bottom: 3rem;
-    }
-    
-    ul li {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        flex-wrap: wrap;
-        padding: .7rem;
-        background: #1b1a1f;
-        color: #fff;
-    }
-    
-    ul li .user-info {
-        width: 80%;
-        width: calc(100% - 3.5rem);
-        width: -webkit-calc(100% -3rem);
-        padding-left: .5rem;
-    }
-    
-    ul li .desc {
-        margin: 5px
-    }
-    
-    ul li .details-img img {
-        width: 30%;
-        height: 5rem;
-        display: block;
-        border-radius: 3px;
-        box-sizing: border-box;
-        margin: 3px;
-        float: left;
-    }
-    
-    .iconfont.icon-wuxing.active {
-        background: url("../assets/icon-star.png");
-        background-size: 100% 100%;
-    }
+
+        li {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            flex-wrap: wrap;
+            padding: .7rem;
+            background: #1b1a1f;
+            color: #fff;
+            
+            .user-info {
+                width: 80%;
+                width: calc(100% - 3.5rem);
+                width: -webkit-calc(100% -3rem);
+                padding-left: .5rem;
+            }
+            .desc {
+                margin: 5px
+            }
+            .details-img img {
+                width: 30%;
+                height: 5rem;
+                display: block;
+                border-radius: 3px;
+                box-sizing: border-box;
+                margin: 3px;
+                float: left;
+            }
+        }
+    }   
     
     .iconfont.icon-wuxing {
         display: inline-block;
         width: 1rem;
         height: 1rem;
         margin: 0 .1rem;
+        &.active {
+            background: url("../assets/icon-star.png");
+            background-size: 100% 100%;
+        }
     }
     
     .time {

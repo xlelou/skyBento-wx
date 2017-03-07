@@ -51,7 +51,7 @@
     }
 
 </script>
-<style>
+<style lang="scss">
     .weui-uploader__bd {
         overflow: visible
     }
@@ -60,11 +60,11 @@
         background: url(../assets/icon-addImage.png);
         background-size: 100%;
         border: none;
-    }
-    
-    .weui-uploader__input-box::before,
-    .weui-uploader__input-box::after {
-        display: none;
+
+        &::before,
+        &::after {
+            display: none;
+        }
     }
     
     #uploaderFiles li {

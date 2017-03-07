@@ -29,7 +29,11 @@
     }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
+    @mixin bgImage($url) {
+        background: url($url) no-repeat center;
+        background-size: 100%;
+    }
     div {
         display: flex;
         margin: 1rem 0;
@@ -41,12 +45,10 @@
         margin: 0 .5rem;
         height: 2rem;
         width: 2rem;
-        background: url(../assets/icon-ustar.png) no-repeat center;
-        background-size: 100%;
-    }
-    
-    span.active {
-        background: url(../assets/icon-star.png) no-repeat center;
-        background-size: 100%;
+        @include bgImage("../assets/icon-ustar.png");
+
+        &.active {
+            @include bgImage("../assets/icon-star.png");
+        }
     }
 </style>

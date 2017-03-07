@@ -87,7 +87,7 @@
     }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
     .com-order {
         margin: .5rem 0 1rem 0;
     }
@@ -116,21 +116,19 @@
     
     ul {
         padding: 0 .5rem;
-        border-bottom: 1px solid #656565
-    }
-    
-    ul li {
-        margin: .5rem;
-        display: flex;
-        justify-content: space-between
-    }
-    
-    ul li span:first-child {
-        flex: 2;
-    }
-    
-    ul li span {
-        flex: 1;
+        border-bottom: 1px solid #656565;
+
+        li {
+            margin: .5rem;
+            display: flex;
+            justify-content: space-between;
+            span {
+                flex: 1;
+                &:first-child {
+                    flex: 2;
+                }
+            }
+        }
     }
     
     .total {

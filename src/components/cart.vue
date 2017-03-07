@@ -61,21 +61,20 @@
     }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
+    #clear-cart {
+        font-size: .95rem;
+    }
     .weui-actionsheet__action {
         margin-top: 0
     }
     
-    .weui-actionsheet__cell:hover,
-    .weui-actionsheet__cell:link,
-    .weui-actionsheet__cell:active,
-    .weui-actionsheet__cell:visited,
     .weui-actionsheet,
     .weui-actionsheet__menu {
         background: rgba(0, 0, 0, .4);
     }
     
-    .weui-actionsheet-title h5,
+    .weui-actionsheet-title h5
     .weui-actionsheet-title {
         font-size: .95rem;
         background: transparent;
@@ -100,49 +99,50 @@
         padding: .25rem;
         justify-content: space-between
     }
-    
+
     .weui-actionsheet__cell {
         display: flex;
         justify-content: space-between;
-        align-items: center
-    }
-    
-    .weui-actionsheet__cell.empty {
-        text-indent: 1rem;
-    }
-    
-    .weui-actionsheet__cell .product-name {
-        width: 45%;
-        text-align: left;
-        text-indent: .5rem;
-        font-weight: normal
-    }
-    
-    .weui-actionsheet__cell .cart-price {
-        width: 30%;
-    }
-    
-    .weui-actionsheet__cell .info {
-        width: 25%;
-    }
-    
-    .weui-actionsheet__cell .info .minus,
-    .weui-actionsheet__cell .info .add {
-        display: inline-block;
-        width: 1.25rem;
-        height: 1.25rem;
-        border-radius: 50%;
-        line-height: 1rem;
-        box-sizing: border-box;
-    }
-    
-    .weui-actionsheet__cell .info .minus {
-        border: 1px solid #ff8400;
-        color: #ff8400;
-    }
-    
-    .weui-actionsheet__cell .info .add {
-        background: #ff8400;
-        color: #fff
-    }
+        align-items: center;
+
+        &:hover,
+        &:visited,
+        &:link,
+        &:active {
+            background: rgba(0, 0, 0, .4);
+        }
+        &.empty {
+            text-indent: 1rem;
+        }
+        .product-name {
+            width: 45%;
+            text-align: left;
+            text-indent: .5rem;
+            font-weight: normal
+        }
+        .cart-price {
+            width: 30%;
+        }
+        .info  {
+            width: 25%;
+            .public {
+                display: inline-block;
+                width: 1.25rem;
+                height: 1.25rem;
+                border-radius: 50%;
+                line-height: 1rem;
+                box-sizing: border-box;
+            }
+            .minus {
+                @extend .public;
+                border: 1px solid #ff8400;
+                color: #ff8400;
+            }
+            .add {
+                @extend .public;
+                background: #ff8400;
+                color: #fff
+            }
+        }
+    } 
 </style>

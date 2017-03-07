@@ -38,7 +38,7 @@
     }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
     .menu-wrapper {
         position: absolute;
         right: 0;
@@ -48,34 +48,32 @@
         padding: 3rem 0rem;
         background-size: 100% 100%;
         color: #fff;
-    }
-    
-    .menu-wrapper ul {
-        list-style-type: none;
-        width: 60%;
-        float: right;
-        text-align: left;
-    }
-    
-    .menu-wrapper ul li {
-        padding: .2rem
-    }
-    
-    .menu-wrapper ul li.active {
-        border-bottom: 1px solid #fff;
-        display: inline-block;
-        position: relative;
-    }
-    
-    .menu-wrapper ul li.active::before {
-        content: "";
-        display: inline-block;
-        background: url(../assets/icon-meal.png);
-        background-size: 100% 100%;
-        width: 2rem;
-        position: absolute;
-        height: 2rem;
-        left: -2rem;
-        bottom: -.5rem;
+
+        ul {
+            list-style-type: none;
+            width: 60%;
+            float: right;
+            text-align: left;
+            
+            li {
+                padding: .2rem;
+                &.active {
+                    border-bottom: 1px solid #fff;
+                    display: inline-block;
+                    position: relative;
+                    &::before {
+                        content: "";
+                        display: inline-block;
+                        background: url(../assets/icon-meal.png);
+                        background-size: 100% 100%;
+                        width: 2rem;
+                        position: absolute;
+                        height: 2rem;
+                        left: -2rem;
+                        bottom: -.5rem;
+                    }
+                }
+            }
+        }
     }
 </style>
